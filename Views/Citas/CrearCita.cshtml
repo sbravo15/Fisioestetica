@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "CrearCita";
+}
+
+
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <section style="background-color: #eee;">
+                    <div class="container my-5 py-5">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-md-12 col-lg-10 col-xl-8">
+                                <div class="card">
+                                    <div class="card-body">
+
+
+                                        <div class="form-group">
+                                            <input type="email" class="form-control form-control-user"
+                                                   id="exampleInputEmail" aria-describedby="emailHelp"
+                                                   placeholder="Dirección de correo electrónico...">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-user"
+                                                   id="exampleInputPadecimiento" aria-describedby="PadecimientoHelp"
+                                                   placeholder="Motivo de la consulta">
+                                        </div>
+
+
+                                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                            <option selected>Fisio Terapeuta</option>
+                                            <option value="1">Cedric</option>
+                                            <option value="2">Airi</option>
+                                            <option value="3">Brielle</option>
+                                        </select>
+
+
+
+                                        <div class="col-5">
+                                            <div class="input-group date" id="datepicker">
+                                                <input type="text" class="form-control" id="date"
+                                                       placeholder="Hora y Fecha" />
+                                                <span class="input-group-append">
+                                                    <span class="input-group-text bg-light d-block">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
+                                            <div class="d-flex flex-start w-100">
+
+                                                <div class="form-outline w-100">
+                                                    <textarea class="form-control" id="textAreaExample" rows="4"
+                                                              style="background: #fff;"></textarea>
+                                                    <label class="form-label" for="textAreaExample">Tratamiento y detalles</label>
+                                                </div>
+                                            </div>
+                                            <div class="float-end mt-2 pt-1">
+                                                <a href="/">
+                                                    <button type="button" class="btn btn-primary btn-sm">Agendar Consulta</button>
+                                                </a>
+                                                <a href="/">
+                                                    <button type="button" class="btn btn-outline-primary btn-sm">Regresar</button>
+                                                </a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+</body>
