@@ -11,7 +11,6 @@ namespace G7.Models
         public int IdUsuario { get; set; }
         public int IdEmpleado { get; set; }
         public string Condicion { get; set; }
-        public string Tratamiento { get; set; }
         public DateTime Hora { get; set; }
         public bool Status { get; set; }
     }

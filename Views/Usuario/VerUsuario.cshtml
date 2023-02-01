@@ -1,0 +1,90 @@
+﻿@model IEnumerable<G7.Models.UsuarioObj>
+
+@{
+    ViewBag.Title = "VerUsuario";
+}
+
+<h2>VerUsuario</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Id Usuario
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Primer Apellido
+        </th>
+        <th>
+            Segundo Apellido
+        </th>
+        <th>
+            Cédula
+        </th>
+        <th>
+            Teléfono
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Género
+        </th>
+        <th>
+            Edad
+        </th>
+        <th>
+            Tipo de Usuario
+        </th>
+        <th>
+            estado
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellido1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellido2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cedula)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Genero)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Edad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.State)
+        </td>
+        
+    </tr>
+}
+
+</table>

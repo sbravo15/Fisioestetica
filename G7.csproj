@@ -120,11 +120,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CitasController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\ExpedientesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlanillaController.cs" />
+    <Compile Include="Controllers\SesionController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -137,7 +139,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="agendarCita.html" />
     <Content Include="charts.html" />
     <Content Include="comment.html" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -148,8 +149,6 @@
     <Content Include="css\sb-admin-2.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="forgot-password.html" />
-    <Content Include="generarExpediente.html" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="img\Mossa-icon.jpg" />
@@ -165,8 +164,6 @@
     <Content Include="js\demo\datatables-demo.js" />
     <Content Include="js\sb-admin-2.js" />
     <Content Include="js\sb-admin-2.min.js" />
-    <Content Include="login.html" />
-    <Content Include="register.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -180,11 +177,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="tableExpediente.html" />
-    <Content Include="tablePlanilla.html" />
-    <Content Include="tablesCita.html" />
-    <Content Include="tablesDoctor.html" />
-    <Content Include="tablesUser.html" />
     <Content Include="vendor\bootstrap\js\bootstrap.bundle.js" />
     <Content Include="vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="vendor\bootstrap\js\bootstrap.js" />
@@ -2042,16 +2034,18 @@
     <Content Include="vendor\jquery\jquery.slim.min.map" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Citas\CrearCita.cshtml" />
-    <Content Include="Views\Citas\test.cshtml" />
     <Content Include="Views\Citas\VerCita.cshtml" />
+    <Content Include="Views\Sesion\ForgotPassword.cshtml" />
+    <Content Include="Views\Sesion\Login.cshtml" />
+    <Content Include="Views\Sesion\Register.cshtml" />
+    <Content Include="Views\Expedientes\VerExpediente.cshtml" />
+    <Content Include="Views\Expedientes\CrearExpediente.cshtml" />
+    <Content Include="Views\Planilla\VerPlanilla.cshtml" />
+    <Content Include="Views\Doctor\VerDoctor.cshtml" />
+    <Content Include="Views\Usuario\VerUsuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Admin\" />
-    <Folder Include="Views\Doctor\" />
-    <Folder Include="Views\Expedientes\" />
-    <Folder Include="Views\Planilla\" />
-    <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

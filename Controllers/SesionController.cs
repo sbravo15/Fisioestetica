@@ -6,23 +6,18 @@ using System.Web.Mvc;
 
 namespace G7.Controllers
 {
-    public class CitasController : Controller
+    public class SesionController : Controller
     {
-        // GET: Citas
-        public ActionResult CrearCita()
+        // GET: Sesion
+        public ActionResult Register()
         {
             return View();
         }
-        
-        public ActionResult VerCita()
+        public ActionResult Login()
         {
             return View();
         }
-        public ActionResult EditarCita()
-        {
-            return View();
-        }
-        public ActionResult CancelarCita()
+        public ActionResult ForgotPassword()
         {
             return View();
         }
