@@ -13,6 +13,7 @@ namespace FisioAPI.Models
         public decimal SalarioBruto { get; set; }
         public decimal Seguro { get; set; }
         public decimal Deducciones { get; set; }
+        public decimal PagosExtra { get; set; }
         public decimal SalarioNeto { get; set; }
     }
     public class RespuestaPlanillaObj

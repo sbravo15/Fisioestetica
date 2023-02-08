@@ -2,10 +2,14 @@
   "ExpandedNodes": [
     "",
     "\\Controllers",
+    "\\FisioAPI",
+    "\\FisioAPI\\Database",
+    "\\FisioAPI\\Models",
     "\\Views",
+    "\\Views\\Sesion",
     "\\Views\\Shared",
     "\\Views\\Usuario"
   ],
-  "SelectedNode": "\\Views\\Usuario\\VerUsuario.cshtml",
+  "SelectedNode": "\\FisioAPI\\Models\\UsuarioModel.cs",
   "PreviewInSolutionExplorer": false
 }
