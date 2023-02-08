@@ -48,6 +48,24 @@ namespace FisioAPI.Database
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Datos_Usuario_Result>("Consultar_Datos_Usuario", emailParameter, contrasennaParameter);
         }
     
+        public virtual ObjectResult<Consultar_IdPlanilla_Result> Consultar_IdPlanilla(Nullable<int> idPlanilla)
+        {
+            var idPlanillaParameter = idPlanilla.HasValue ?
+                new ObjectParameter("IdPlanilla", idPlanilla) :
+                new ObjectParameter("IdPlanilla", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_IdPlanilla_Result>("Consultar_IdPlanilla", idPlanillaParameter);
+        }
+    
+        public virtual ObjectResult<Consultar_Planilla_Doctor_Result> Consultar_Planilla_Doctor(Nullable<int> idDoctor)
+        {
+            var idDoctorParameter = idDoctor.HasValue ?
+                new ObjectParameter("IdDoctor", idDoctor) :
+                new ObjectParameter("IdDoctor", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Planilla_Doctor_Result>("Consultar_Planilla_Doctor", idDoctorParameter);
+        }
+    
         public virtual ObjectResult<Consultar_Usuarios_Estado_Result> Consultar_Usuarios_Estado(Nullable<int> indicador)
         {
             var indicadorParameter = indicador.HasValue ?
@@ -55,6 +73,43 @@ namespace FisioAPI.Database
                 new ObjectParameter("indicador", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Usuarios_Estado_Result>("Consultar_Usuarios_Estado", indicadorParameter);
+        }
+    
+        public virtual int Editar_Datos_Planilla(Nullable<int> idPlanilla, Nullable<int> idDoctor, Nullable<int> horasT, Nullable<decimal> salBrut, Nullable<decimal> seguro, Nullable<decimal> deducc, Nullable<decimal> extra, Nullable<decimal> salNet)
+        {
+            var idPlanillaParameter = idPlanilla.HasValue ?
+                new ObjectParameter("IdPlanilla", idPlanilla) :
+                new ObjectParameter("IdPlanilla", typeof(int));
+    
+            var idDoctorParameter = idDoctor.HasValue ?
+                new ObjectParameter("IdDoctor", idDoctor) :
+                new ObjectParameter("IdDoctor", typeof(int));
+    
+            var horasTParameter = horasT.HasValue ?
+                new ObjectParameter("HorasT", horasT) :
+                new ObjectParameter("HorasT", typeof(int));
+    
+            var salBrutParameter = salBrut.HasValue ?
+                new ObjectParameter("SalBrut", salBrut) :
+                new ObjectParameter("SalBrut", typeof(decimal));
+    
+            var seguroParameter = seguro.HasValue ?
+                new ObjectParameter("Seguro", seguro) :
+                new ObjectParameter("Seguro", typeof(decimal));
+    
+            var deduccParameter = deducc.HasValue ?
+                new ObjectParameter("Deducc", deducc) :
+                new ObjectParameter("Deducc", typeof(decimal));
+    
+            var extraParameter = extra.HasValue ?
+                new ObjectParameter("Extra", extra) :
+                new ObjectParameter("Extra", typeof(decimal));
+    
+            var salNetParameter = salNet.HasValue ?
+                new ObjectParameter("SalNet", salNet) :
+                new ObjectParameter("SalNet", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Editar_Datos_Planilla", idPlanillaParameter, idDoctorParameter, horasTParameter, salBrutParameter, seguroParameter, deduccParameter, extraParameter, salNetParameter);
         }
     
         public virtual int Editar_Datos_Usuario(string nombre, string apellido1, string apellido2, string cedula, Nullable<int> telefono, string email, string genero, Nullable<int> edad, string contrasenna, Nullable<int> tipoUsuario, Nullable<bool> state, Nullable<int> iDusuario)
@@ -180,107 +235,37 @@ namespace FisioAPI.Database
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Registrar_Datos_Usuario", nombreParameter, apellido1Parameter, apellido2Parameter, cedulaParameter, telefonoParameter, emailParameter, generoParameter, edadParameter, contrasennaParameter, tipoUsuarioParameter);
         }
     
-        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        public virtual int Registrar_Planilla(Nullable<int> idDoctor, Nullable<int> horasT, Nullable<decimal> salBrut, Nullable<decimal> seguro, Nullable<decimal> deducc, Nullable<decimal> extra, Nullable<decimal> salNet)
         {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
+            var idDoctorParameter = idDoctor.HasValue ?
+                new ObjectParameter("IdDoctor", idDoctor) :
+                new ObjectParameter("IdDoctor", typeof(int));
     
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
+            var horasTParameter = horasT.HasValue ?
+                new ObjectParameter("HorasT", horasT) :
+                new ObjectParameter("HorasT", typeof(int));
     
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
+            var salBrutParameter = salBrut.HasValue ?
+                new ObjectParameter("SalBrut", salBrut) :
+                new ObjectParameter("SalBrut", typeof(decimal));
     
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
+            var seguroParameter = seguro.HasValue ?
+                new ObjectParameter("Seguro", seguro) :
+                new ObjectParameter("Seguro", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
-        }
+            var deduccParameter = deducc.HasValue ?
+                new ObjectParameter("Deducc", deducc) :
+                new ObjectParameter("Deducc", typeof(decimal));
     
-        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
+            var extraParameter = extra.HasValue ?
+                new ObjectParameter("Extra", extra) :
+                new ObjectParameter("Extra", typeof(decimal));
     
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
+            var salNetParameter = salNet.HasValue ?
+                new ObjectParameter("SalNet", salNet) :
+                new ObjectParameter("SalNet", typeof(decimal));
     
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
-    
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
-        }
-    
-        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var new_diagramnameParameter = new_diagramname != null ?
-                new ObjectParameter("new_diagramname", new_diagramname) :
-                new ObjectParameter("new_diagramname", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
-        }
-    
-        public virtual int sp_upgraddiagrams()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Registrar_Planilla", idDoctorParameter, horasTParameter, salBrutParameter, seguroParameter, deduccParameter, extraParameter, salNetParameter);
         }
     }
 }
