@@ -207,10 +207,54 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Database\Citas.cs">
+      <DependentUpon>MOSSAdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Comentarios.cs">
+      <DependentUpon>MOSSAdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Consultar_Datos_Usuario_Result.cs">
+      <DependentUpon>MOSSAdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Consultar_Usuarios_Estado_Result.cs">
+      <DependentUpon>MOSSAdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Doctores.cs">
+      <DependentUpon>MOSSAdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MOSSAdb.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MOSSAdb.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MOSSAdb.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MOSSAdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MOSSAdb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MOSSAdb.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Planilla.cs">
+      <DependentUpon>MOSSAdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\TBITACORA.cs">
+      <DependentUpon>MOSSAdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\TipoPersona.cs">
+      <DependentUpon>MOSSAdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Usuario.cs">
+      <DependentUpon>MOSSAdb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BitacoraModel.cs" />
     <Compile Include="Models\CitasObj.cs" />
     <Compile Include="Models\DoctorObj.cs" />
     <Compile Include="Models\ExpedientesObj.cs" />
@@ -225,6 +269,16 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Database\MOSSAdb.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MOSSAdb.edmx</DependentUpon>
+      <LastGenOutput>MOSSAdb.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Database\MOSSAdb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MOSSAdb.edmx</DependentUpon>
+      <LastGenOutput>MOSSAdb.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -249,6 +303,13 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <EntityDeploy Include="Database\MOSSAdb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MOSSAdb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Database\MOSSAdb.edmx.diagram">
+      <DependentUpon>MOSSAdb.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -272,7 +333,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Database\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
