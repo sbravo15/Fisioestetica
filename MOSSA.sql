@@ -295,4 +295,79 @@ END
 GO
 
 
+/*PLANILLA*/
+
+--Guardar planilla
+CREATE PROCEDURE [dbo].[Registrar_Planilla]
+	@IdDoctor int,
+	@HorasT int,
+	@SalBrut decimal,
+	@Seguro decimal,
+	@Deducc decimal,
+	@Extra decimal,
+	@SalNet decimal
+	
+AS
+BEGIN
+
+	INSERT INTO dbo.Planilla(IdDoctorFK, horasTrabajadas, salarioBruto, seguro, deducciones,pagosExtra, salarioNeto)
+    VALUES (@IdDoctor, @HorasT, @SalBrut, @Seguro, @Deducc, @Extra, @SalNet)
+
+END
+GO
+
+
+--Editar datos de planilla 
+CREATE PROCEDURE [dbo].[Editar_Datos_Planilla]
+	@IdPlanilla int,
+	@IdDoctor int,
+	@HorasT int,
+	@SalBrut decimal,
+	@Seguro decimal,
+	@Deducc decimal,
+	@Extra decimal,
+	@SalNet decimal
+	
+AS
+BEGIN
+
+	UPDATE Planilla
+	SET
+	IdDoctorFK = @IdDoctor,
+	horasTrabajadas = @HorasT,
+	salarioBruto = @SalBrut,
+	seguro = @Seguro,
+	deducciones = @Deducc,
+	pagosExtra = @Extra,
+	salarioNeto = @SalNet
+
+	WHERE idPlanilla = @IdPlanilla
+	END
+GO
+
+--consultar planilla por numero de doctor
+CREATE PROCEDURE [dbo].[Consultar_Planilla_Doctor]
+	@IdDoctor int
+AS
+BEGIN
+
+	SELECT	*
+	FROM	dbo.Planilla
+	WHERE	IdDoctorFK = @IdDoctor
+
+END
+GO
+
+--consultar planilla por numero de planilla
+CREATE PROCEDURE [dbo].[Consultar_IdPlanilla]
+	@IdPlanilla int
+AS
+BEGIN
+
+	SELECT	*
+	FROM	dbo.Planilla
+	WHERE	idPlanilla = @IdPlanilla
+
+END
+GO
 

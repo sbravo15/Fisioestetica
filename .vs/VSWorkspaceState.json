@@ -3,6 +3,7 @@
     "",
     "\\Controllers",
     "\\FisioAPI",
+    "\\FisioAPI\\Controllers",
     "\\FisioAPI\\Database",
     "\\FisioAPI\\Models",
     "\\Views",
@@ -10,6 +11,6 @@
     "\\Views\\Shared",
     "\\Views\\Usuario"
   ],
-  "SelectedNode": "\\FisioAPI\\Models\\UsuarioModel.cs",
+  "SelectedNode": "\\FisioAPI\\Controllers\\UsuarioController.cs",
   "PreviewInSolutionExplorer": false
 }

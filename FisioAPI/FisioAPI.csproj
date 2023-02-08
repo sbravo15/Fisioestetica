@@ -242,6 +242,12 @@
     <Compile Include="Database\Planilla.cs">
       <DependentUpon>MOSSAdb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>MOSSAdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\sp_helpdiagrams_Result.cs">
+      <DependentUpon>MOSSAdb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\TBITACORA.cs">
       <DependentUpon>MOSSAdb.tt</DependentUpon>
     </Compile>
