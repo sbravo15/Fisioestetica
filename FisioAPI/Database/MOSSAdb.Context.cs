@@ -30,10 +30,29 @@ namespace FisioAPI.Database
         public virtual DbSet<Citas> Citas { get; set; }
         public virtual DbSet<Comentarios> Comentarios { get; set; }
         public virtual DbSet<Doctores> Doctores { get; set; }
+        public virtual DbSet<Expediente> Expediente { get; set; }
         public virtual DbSet<Planilla> Planilla { get; set; }
         public virtual DbSet<TBITACORA> TBITACORA { get; set; }
         public virtual DbSet<TipoPersona> TipoPersona { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
+    
+        public virtual ObjectResult<Consultar_Citas_Doctor_Result> Consultar_Citas_Doctor(Nullable<int> idDoctor)
+        {
+            var idDoctorParameter = idDoctor.HasValue ?
+                new ObjectParameter("IdDoctor", idDoctor) :
+                new ObjectParameter("IdDoctor", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Citas_Doctor_Result>("Consultar_Citas_Doctor", idDoctorParameter);
+        }
+    
+        public virtual ObjectResult<Consultar_Citas_Paciente_Result> Consultar_Citas_Paciente(Nullable<int> idPaciente)
+        {
+            var idPacienteParameter = idPaciente.HasValue ?
+                new ObjectParameter("IdPaciente", idPaciente) :
+                new ObjectParameter("IdPaciente", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Citas_Paciente_Result>("Consultar_Citas_Paciente", idPacienteParameter);
+        }
     
         public virtual ObjectResult<Consultar_Datos_Usuario_Result> Consultar_Datos_Usuario(string email, string contrasenna)
         {
@@ -48,6 +67,33 @@ namespace FisioAPI.Database
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Datos_Usuario_Result>("Consultar_Datos_Usuario", emailParameter, contrasennaParameter);
         }
     
+        public virtual ObjectResult<Consultar_Expediente_Paciente_Result> Consultar_Expediente_Paciente(Nullable<int> idPaciente)
+        {
+            var idPacienteParameter = idPaciente.HasValue ?
+                new ObjectParameter("IdPaciente", idPaciente) :
+                new ObjectParameter("IdPaciente", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Expediente_Paciente_Result>("Consultar_Expediente_Paciente", idPacienteParameter);
+        }
+    
+        public virtual ObjectResult<Consultar_IdPlanilla_Result> Consultar_IdPlanilla(Nullable<int> idPlanilla)
+        {
+            var idPlanillaParameter = idPlanilla.HasValue ?
+                new ObjectParameter("IdPlanilla", idPlanilla) :
+                new ObjectParameter("IdPlanilla", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_IdPlanilla_Result>("Consultar_IdPlanilla", idPlanillaParameter);
+        }
+    
+        public virtual ObjectResult<Consultar_Planilla_Doctor_Result> Consultar_Planilla_Doctor(Nullable<int> idDoctor)
+        {
+            var idDoctorParameter = idDoctor.HasValue ?
+                new ObjectParameter("IdDoctor", idDoctor) :
+                new ObjectParameter("IdDoctor", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Planilla_Doctor_Result>("Consultar_Planilla_Doctor", idDoctorParameter);
+        }
+    
         public virtual ObjectResult<Consultar_Usuarios_Estado_Result> Consultar_Usuarios_Estado(Nullable<int> indicador)
         {
             var indicadorParameter = indicador.HasValue ?
@@ -55,6 +101,72 @@ namespace FisioAPI.Database
                 new ObjectParameter("indicador", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Usuarios_Estado_Result>("Consultar_Usuarios_Estado", indicadorParameter);
+        }
+    
+        public virtual int Editar_Citas(Nullable<int> idCita, Nullable<int> idUsuario, Nullable<int> idDoctor, string condicion, Nullable<System.DateTime> hora, Nullable<bool> status)
+        {
+            var idCitaParameter = idCita.HasValue ?
+                new ObjectParameter("IdCita", idCita) :
+                new ObjectParameter("IdCita", typeof(int));
+    
+            var idUsuarioParameter = idUsuario.HasValue ?
+                new ObjectParameter("IdUsuario", idUsuario) :
+                new ObjectParameter("IdUsuario", typeof(int));
+    
+            var idDoctorParameter = idDoctor.HasValue ?
+                new ObjectParameter("IdDoctor", idDoctor) :
+                new ObjectParameter("IdDoctor", typeof(int));
+    
+            var condicionParameter = condicion != null ?
+                new ObjectParameter("Condicion", condicion) :
+                new ObjectParameter("Condicion", typeof(string));
+    
+            var horaParameter = hora.HasValue ?
+                new ObjectParameter("Hora", hora) :
+                new ObjectParameter("Hora", typeof(System.DateTime));
+    
+            var statusParameter = status.HasValue ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Editar_Citas", idCitaParameter, idUsuarioParameter, idDoctorParameter, condicionParameter, horaParameter, statusParameter);
+        }
+    
+        public virtual int Editar_Datos_Planilla(Nullable<int> idPlanilla, Nullable<int> idDoctor, Nullable<int> horasT, Nullable<decimal> salBrut, Nullable<decimal> seguro, Nullable<decimal> deducc, Nullable<decimal> extra, Nullable<decimal> salNet)
+        {
+            var idPlanillaParameter = idPlanilla.HasValue ?
+                new ObjectParameter("IdPlanilla", idPlanilla) :
+                new ObjectParameter("IdPlanilla", typeof(int));
+    
+            var idDoctorParameter = idDoctor.HasValue ?
+                new ObjectParameter("IdDoctor", idDoctor) :
+                new ObjectParameter("IdDoctor", typeof(int));
+    
+            var horasTParameter = horasT.HasValue ?
+                new ObjectParameter("HorasT", horasT) :
+                new ObjectParameter("HorasT", typeof(int));
+    
+            var salBrutParameter = salBrut.HasValue ?
+                new ObjectParameter("SalBrut", salBrut) :
+                new ObjectParameter("SalBrut", typeof(decimal));
+    
+            var seguroParameter = seguro.HasValue ?
+                new ObjectParameter("Seguro", seguro) :
+                new ObjectParameter("Seguro", typeof(decimal));
+    
+            var deduccParameter = deducc.HasValue ?
+                new ObjectParameter("Deducc", deducc) :
+                new ObjectParameter("Deducc", typeof(decimal));
+    
+            var extraParameter = extra.HasValue ?
+                new ObjectParameter("Extra", extra) :
+                new ObjectParameter("Extra", typeof(decimal));
+    
+            var salNetParameter = salNet.HasValue ?
+                new ObjectParameter("SalNet", salNet) :
+                new ObjectParameter("SalNet", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Editar_Datos_Planilla", idPlanillaParameter, idDoctorParameter, horasTParameter, salBrutParameter, seguroParameter, deduccParameter, extraParameter, salNetParameter);
         }
     
         public virtual int Editar_Datos_Usuario(string nombre, string apellido1, string apellido2, string cedula, Nullable<int> telefono, string email, string genero, Nullable<int> edad, string contrasenna, Nullable<int> tipoUsuario, Nullable<bool> state, Nullable<int> iDusuario)
@@ -110,6 +222,31 @@ namespace FisioAPI.Database
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Editar_Datos_Usuario", nombreParameter, apellido1Parameter, apellido2Parameter, cedulaParameter, telefonoParameter, emailParameter, generoParameter, edadParameter, contrasennaParameter, tipoUsuarioParameter, stateParameter, iDusuarioParameter);
         }
     
+        public virtual int Editar_Expediente(Nullable<int> idExpediente, Nullable<int> idUsuario, Nullable<int> idDoctor, string padecimiento, string tratamiento)
+        {
+            var idExpedienteParameter = idExpediente.HasValue ?
+                new ObjectParameter("IdExpediente", idExpediente) :
+                new ObjectParameter("IdExpediente", typeof(int));
+    
+            var idUsuarioParameter = idUsuario.HasValue ?
+                new ObjectParameter("IdUsuario", idUsuario) :
+                new ObjectParameter("IdUsuario", typeof(int));
+    
+            var idDoctorParameter = idDoctor.HasValue ?
+                new ObjectParameter("IdDoctor", idDoctor) :
+                new ObjectParameter("IdDoctor", typeof(int));
+    
+            var padecimientoParameter = padecimiento != null ?
+                new ObjectParameter("Padecimiento", padecimiento) :
+                new ObjectParameter("Padecimiento", typeof(string));
+    
+            var tratamientoParameter = tratamiento != null ?
+                new ObjectParameter("Tratamiento", tratamiento) :
+                new ObjectParameter("Tratamiento", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Editar_Expediente", idExpedienteParameter, idUsuarioParameter, idDoctorParameter, padecimientoParameter, tratamientoParameter);
+        }
+    
         public virtual int Registrar_Bitacora(string email, Nullable<System.DateTime> fechaHora, Nullable<int> codigoError, string descripcion, string origen)
         {
             var emailParameter = email != null ?
@@ -133,6 +270,27 @@ namespace FisioAPI.Database
                 new ObjectParameter("Origen", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Registrar_Bitacora", emailParameter, fechaHoraParameter, codigoErrorParameter, descripcionParameter, origenParameter);
+        }
+    
+        public virtual int Registrar_Cita(Nullable<int> idUsuario, Nullable<int> idDoctor, string condicion, Nullable<System.DateTime> hora)
+        {
+            var idUsuarioParameter = idUsuario.HasValue ?
+                new ObjectParameter("IdUsuario", idUsuario) :
+                new ObjectParameter("IdUsuario", typeof(int));
+    
+            var idDoctorParameter = idDoctor.HasValue ?
+                new ObjectParameter("IdDoctor", idDoctor) :
+                new ObjectParameter("IdDoctor", typeof(int));
+    
+            var condicionParameter = condicion != null ?
+                new ObjectParameter("Condicion", condicion) :
+                new ObjectParameter("Condicion", typeof(string));
+    
+            var horaParameter = hora.HasValue ?
+                new ObjectParameter("Hora", hora) :
+                new ObjectParameter("Hora", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Registrar_Cita", idUsuarioParameter, idDoctorParameter, condicionParameter, horaParameter);
         }
     
         public virtual int Registrar_Datos_Usuario(string nombre, string apellido1, string apellido2, string cedula, Nullable<int> telefono, string email, string genero, Nullable<int> edad, string contrasenna, Nullable<int> tipoUsuario)
@@ -180,107 +338,58 @@ namespace FisioAPI.Database
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Registrar_Datos_Usuario", nombreParameter, apellido1Parameter, apellido2Parameter, cedulaParameter, telefonoParameter, emailParameter, generoParameter, edadParameter, contrasennaParameter, tipoUsuarioParameter);
         }
     
-        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        public virtual int Registrar_Expediente(Nullable<int> idUsuario, Nullable<int> idDoctor, string padecimiento, string tratamiento)
         {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
+            var idUsuarioParameter = idUsuario.HasValue ?
+                new ObjectParameter("IdUsuario", idUsuario) :
+                new ObjectParameter("IdUsuario", typeof(int));
     
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
+            var idDoctorParameter = idDoctor.HasValue ?
+                new ObjectParameter("IdDoctor", idDoctor) :
+                new ObjectParameter("IdDoctor", typeof(int));
     
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
+            var padecimientoParameter = padecimiento != null ?
+                new ObjectParameter("Padecimiento", padecimiento) :
+                new ObjectParameter("Padecimiento", typeof(string));
     
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
+            var tratamientoParameter = tratamiento != null ?
+                new ObjectParameter("Tratamiento", tratamiento) :
+                new ObjectParameter("Tratamiento", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Registrar_Expediente", idUsuarioParameter, idDoctorParameter, padecimientoParameter, tratamientoParameter);
         }
     
-        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        public virtual int Registrar_Planilla(Nullable<int> idDoctor, Nullable<int> horasT, Nullable<decimal> salBrut, Nullable<decimal> seguro, Nullable<decimal> deducc, Nullable<decimal> extra, Nullable<decimal> salNet)
         {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
+            var idDoctorParameter = idDoctor.HasValue ?
+                new ObjectParameter("IdDoctor", idDoctor) :
+                new ObjectParameter("IdDoctor", typeof(int));
     
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
+            var horasTParameter = horasT.HasValue ?
+                new ObjectParameter("HorasT", horasT) :
+                new ObjectParameter("HorasT", typeof(int));
     
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
+            var salBrutParameter = salBrut.HasValue ?
+                new ObjectParameter("SalBrut", salBrut) :
+                new ObjectParameter("SalBrut", typeof(decimal));
     
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
+            var seguroParameter = seguro.HasValue ?
+                new ObjectParameter("Seguro", seguro) :
+                new ObjectParameter("Seguro", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
-        }
+            var deduccParameter = deducc.HasValue ?
+                new ObjectParameter("Deducc", deducc) :
+                new ObjectParameter("Deducc", typeof(decimal));
     
-        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
+            var extraParameter = extra.HasValue ?
+                new ObjectParameter("Extra", extra) :
+                new ObjectParameter("Extra", typeof(decimal));
     
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
+            var salNetParameter = salNet.HasValue ?
+                new ObjectParameter("SalNet", salNet) :
+                new ObjectParameter("SalNet", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var new_diagramnameParameter = new_diagramname != null ?
-                new ObjectParameter("new_diagramname", new_diagramname) :
-                new ObjectParameter("new_diagramname", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
-        }
-    
-        public virtual int sp_upgraddiagrams()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Registrar_Planilla", idDoctorParameter, horasTParameter, salBrutParameter, seguroParameter, deduccParameter, extraParameter, salNetParameter);
         }
     }
 }

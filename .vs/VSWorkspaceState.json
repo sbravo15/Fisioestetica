@@ -11,6 +11,6 @@
     "\\Views\\Shared",
     "\\Views\\Usuario"
   ],
-  "SelectedNode": "\\FisioAPI\\Controllers\\UsuarioController.cs",
+  "SelectedNode": "\\FisioAPI\\Models\\PlanillaModel.cs",
   "PreviewInSolutionExplorer": false
 }

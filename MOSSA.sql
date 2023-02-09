@@ -114,6 +114,23 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+/*Expediente*/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Expediente](
+	[IdExpediente] [int] IDENTITY(1,1) NOT NULL,
+	[IdUsuarioFk] [int] NOT NULL,
+	[IdDoctorFK] [int] NOT NULL,
+	[Padecimiento] [varchar](2500) NOT NULL,
+	[Tratamiento] [varchar](2500) NOT NULL
+PRIMARY KEY CLUSTERED 
+(
+	[IdExpediente] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
 /*Comentarios*/
 SET ANSI_NULLS ON
 GO
@@ -148,6 +165,12 @@ ALTER TABLE [dbo].[Citas]  WITH CHECK ADD FOREIGN KEY([IdDoctorFK])
 REFERENCES [dbo].[Doctores] ([IdDoctor])
 GO
 ALTER TABLE [dbo].[Citas]  WITH CHECK ADD FOREIGN KEY([IdUsuarioFk])
+REFERENCES [dbo].[Usuario] ([IdUsuario])
+GO
+ALTER TABLE [dbo].[Expediente]  WITH CHECK ADD FOREIGN KEY([IdDoctorFK])
+REFERENCES [dbo].[Doctores] ([IdDoctor])
+GO
+ALTER TABLE [dbo].[Expediente]  WITH CHECK ADD FOREIGN KEY([IdUsuarioFk])
 REFERENCES [dbo].[Usuario] ([IdUsuario])
 GO
 
@@ -204,7 +227,6 @@ BEGIN
 END
 GO
 
-
 --Editar datos de usuario 
 CREATE PROCEDURE [dbo].[Editar_Datos_Usuario]
 	@Nombre varchar(100),
@@ -240,7 +262,6 @@ BEGIN
 	WHERE IdUsuario = @IDusuario
 	END
 GO
-
 
 --Validar ususario por mail y contraseña
 CREATE PROCEDURE [dbo].[Consultar_Datos_Usuario]
@@ -316,7 +337,6 @@ BEGIN
 END
 GO
 
-
 --Editar datos de planilla 
 CREATE PROCEDURE [dbo].[Editar_Datos_Planilla]
 	@IdPlanilla int,
@@ -371,3 +391,127 @@ BEGIN
 END
 GO
 
+
+/*CITAS*/
+
+--Guardar citas
+CREATE PROCEDURE [dbo].[Registrar_Cita]
+
+	@IdUsuario int,
+	@IdDoctor int,
+	@Condicion varchar(1000),
+	@Hora datetime
+	
+AS
+BEGIN
+
+	INSERT INTO dbo.Citas(IdUsuarioFk, IdDoctorFK, condicion, Hora,status)
+    VALUES (@IdUsuario, @IdDoctor, @Condicion, @Hora, 1)
+
+END
+GO
+
+--Editar datos de Citas 
+CREATE PROCEDURE [dbo].[Editar_Citas]
+	@IdCita int,
+	@IdUsuario int,
+	@IdDoctor int,
+	@Condicion varchar(1000),
+	@Hora datetime,
+	@Status bit
+	
+AS
+BEGIN
+
+	UPDATE Citas
+	SET
+	IdUsuarioFk = @IdUsuario,
+	IdDoctorFK = @IdDoctor,
+	condicion = @Condicion,
+	Hora = @Hora,
+	status = @Status
+
+	WHERE IdCitas = @IdCita
+	END
+GO
+
+--consultar citas por doctor
+CREATE PROCEDURE [dbo].[Consultar_Citas_Doctor]
+	@IdDoctor int
+AS
+BEGIN
+
+	SELECT	*
+	FROM	dbo.Citas
+	WHERE	IdDoctorFK = @IdDoctor
+
+END
+GO
+
+--consultar citas por paciente
+CREATE PROCEDURE [dbo].[Consultar_Citas_Paciente]
+	@IdPaciente int
+AS
+BEGIN
+
+	SELECT	*
+	FROM	dbo.Citas
+	WHERE	IdUsuarioFk = @IdPaciente
+
+END
+GO
+
+
+/*EXPEDIENTE*/
+
+--Guardar expediente
+CREATE PROCEDURE [dbo].[Registrar_Expediente]
+
+	@IdUsuario int,
+	@IdDoctor int,
+	@Padecimiento varchar(1000),
+	@Tratamiento varchar(1000)
+	
+AS
+BEGIN
+
+	INSERT INTO dbo.Expediente(IdUsuarioFk, IdDoctorFK, Padecimiento, Tratamiento)
+    VALUES (@IdUsuario, @IdDoctor, @Padecimiento, @Tratamiento)
+
+END
+GO
+
+--Editar datos de expediente 
+CREATE PROCEDURE [dbo].[Editar_Expediente]
+	@IdExpediente int,
+	@IdUsuario int,
+	@IdDoctor int,
+	@Padecimiento varchar(1000),
+	@Tratamiento varchar(1000)
+	
+AS
+BEGIN
+
+	UPDATE Expediente
+	SET
+	IdUsuarioFk = @IdUsuario,
+	IdDoctorFK = @IdDoctor,
+	Padecimiento = @Padecimiento,
+	Tratamiento = @Tratamiento
+
+	WHERE IdExpediente = @IdExpediente
+	END
+GO
+
+--consultar expediente por paciente
+CREATE PROCEDURE [dbo].[Consultar_Expediente_Paciente]
+	@IdPaciente int
+AS
+BEGIN
+
+	SELECT	*
+	FROM	dbo.Expediente
+	WHERE	IdUsuarioFk = @IdPaciente
+
+END
+GO

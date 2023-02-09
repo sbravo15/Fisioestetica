@@ -20,6 +20,7 @@ namespace FisioAPI.Database
             this.Citas = new HashSet<Citas>();
             this.Comentarios = new HashSet<Comentarios>();
             this.Doctores = new HashSet<Doctores>();
+            this.Expediente = new HashSet<Expediente>();
         }
     
         public int IdUsuario { get; set; }
@@ -41,6 +42,8 @@ namespace FisioAPI.Database
         public virtual ICollection<Comentarios> Comentarios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Doctores> Doctores { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Expediente> Expediente { get; set; }
         public virtual TipoPersona TipoPersona { get; set; }
     }
 }

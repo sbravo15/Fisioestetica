@@ -22,7 +22,7 @@ namespace FisioAPI.Database
         public string Email { get; set; }
         public string genero { get; set; }
         public int edad { get; set; }
-        public string idTipoPersonaFk { get; set; }
+        public int idTipoPersonaFk { get; set; }
         public bool state { get; set; }
     }
 }

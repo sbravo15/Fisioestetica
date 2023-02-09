@@ -207,6 +207,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PlanillaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Database\Citas.cs">
@@ -215,13 +216,31 @@
     <Compile Include="Database\Comentarios.cs">
       <DependentUpon>MOSSAdb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\Consultar_Citas_Doctor_Result.cs">
+      <DependentUpon>MOSSAdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Consultar_Citas_Paciente_Result.cs">
+      <DependentUpon>MOSSAdb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\Consultar_Datos_Usuario_Result.cs">
+      <DependentUpon>MOSSAdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Consultar_Expediente_Paciente_Result.cs">
+      <DependentUpon>MOSSAdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Consultar_IdPlanilla_Result.cs">
+      <DependentUpon>MOSSAdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Consultar_Planilla_Doctor_Result.cs">
       <DependentUpon>MOSSAdb.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Consultar_Usuarios_Estado_Result.cs">
       <DependentUpon>MOSSAdb.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Doctores.cs">
+      <DependentUpon>MOSSAdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Expediente.cs">
       <DependentUpon>MOSSAdb.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\MOSSAdb.Context.cs">
@@ -242,12 +261,6 @@
     <Compile Include="Database\Planilla.cs">
       <DependentUpon>MOSSAdb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>MOSSAdb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\sp_helpdiagrams_Result.cs">
-      <DependentUpon>MOSSAdb.tt</DependentUpon>
-    </Compile>
     <Compile Include="Database\TBITACORA.cs">
       <DependentUpon>MOSSAdb.tt</DependentUpon>
     </Compile>
@@ -264,6 +277,7 @@
     <Compile Include="Models\CitasObj.cs" />
     <Compile Include="Models\DoctorObj.cs" />
     <Compile Include="Models\ExpedientesObj.cs" />
+    <Compile Include="Models\PlanillaModel.cs" />
     <Compile Include="Models\PlanillaObj.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Models\UsuarioObj.cs" />
