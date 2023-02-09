@@ -206,7 +206,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\CitasController.cs" />
+    <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlanillaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
@@ -275,8 +275,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BitacoraModel.cs" />
-    <Compile Include="Models\CitasModel.cs" />
     <Compile Include="Models\CitasObj.cs" />
+    <Compile Include="Models\DoctorModel.cs" />
     <Compile Include="Models\DoctorObj.cs" />
     <Compile Include="Models\ExpedientesObj.cs" />
     <Compile Include="Models\PlanillaModel.cs" />
@@ -355,6 +355,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Doctor\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
