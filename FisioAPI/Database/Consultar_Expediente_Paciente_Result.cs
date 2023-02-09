@@ -11,6 +11,7 @@ namespace FisioAPI.Database
 {
     using System;
     
+<<<<<<<< HEAD:FisioAPI/Database/Consultar_Expediente_Paciente_Result.cs
     public partial class Consultar_Expediente_Paciente_Result
     {
         public int IdExpediente { get; set; }
@@ -18,5 +19,17 @@ namespace FisioAPI.Database
         public int IdDoctorFK { get; set; }
         public string Padecimiento { get; set; }
         public string Tratamiento { get; set; }
+========
+    public partial class Consultar_IdPlanilla_Result
+    {
+        public int idPlanilla { get; set; }
+        public int IdDoctorFK { get; set; }
+        public int horasTrabajadas { get; set; }
+        public decimal salarioBruto { get; set; }
+        public int seguro { get; set; }
+        public decimal deducciones { get; set; }
+        public decimal pagosExtra { get; set; }
+        public decimal salarioNeto { get; set; }
+>>>>>>>> 5365e53762d0517714457d542bd7f5c95a6aa16d:FisioAPI/Database/Consultar_IdPlanilla_Result.cs
     }
 }

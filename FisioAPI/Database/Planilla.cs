@@ -19,9 +19,9 @@ namespace FisioAPI.Database
         public int horasTrabajadas { get; set; }
         public decimal salarioBruto { get; set; }
         public int seguro { get; set; }
-        public Nullable<decimal> deducciones { get; set; }
-        public Nullable<decimal> pagosExtra { get; set; }
-        public Nullable<decimal> salarioNeto { get; set; }
+        public decimal deducciones { get; set; }
+        public decimal pagosExtra { get; set; }
+        public decimal salarioNeto { get; set; }
     
         public virtual Doctores Doctores { get; set; }
     }

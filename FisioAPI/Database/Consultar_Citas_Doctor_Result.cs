@@ -11,6 +11,7 @@ namespace FisioAPI.Database
 {
     using System;
     
+<<<<<<<< HEAD:FisioAPI/Database/Consultar_Citas_Doctor_Result.cs
     public partial class Consultar_Citas_Doctor_Result
     {
         public int IdCitas { get; set; }
@@ -19,5 +20,17 @@ namespace FisioAPI.Database
         public string condicion { get; set; }
         public System.DateTime Hora { get; set; }
         public bool status { get; set; }
+========
+    public partial class Consultar_Planilla_Doctor_Result
+    {
+        public int idPlanilla { get; set; }
+        public int IdDoctorFK { get; set; }
+        public int horasTrabajadas { get; set; }
+        public decimal salarioBruto { get; set; }
+        public int seguro { get; set; }
+        public decimal deducciones { get; set; }
+        public decimal pagosExtra { get; set; }
+        public decimal salarioNeto { get; set; }
+>>>>>>>> 5365e53762d0517714457d542bd7f5c95a6aa16d:FisioAPI/Database/Consultar_Planilla_Doctor_Result.cs
     }
 }
