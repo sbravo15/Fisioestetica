@@ -27,7 +27,7 @@ namespace FisioAPI.Models
                     return respuesta;
                 }
 
-                var resultado = con.Registrar_Doctor(Doctor.IdDoctor, Doctor.IdUsuario, Doctor.SalarioBruto, Doctor.HoraEntrada, Doctor.HoraSalida);
+                var resultado = con.Registrar_Doctor(Doctor.IdUsuario);
 
 
                 if (resultado > 0)
@@ -44,29 +44,7 @@ namespace FisioAPI.Models
                 return respuesta;
             }
         }
-        //Editar Doctor
-        public RespuestaDoctorObj Editar_Doctor(DoctorObj Doctor)
-        {
-            using (var con = new MOSSAEntities())
-            {
-                RespuestaDoctorObj respuesta = new RespuestaDoctorObj();
-
-                var resultado = con.Editar_Doctor(Doctor.IdDoctor, Doctor.IdUsuario, Doctor.SalarioBruto, Doctor.HoraEntrada, Doctor.HoraSalida);
-
-                if (resultado > 0)
-                {
-                    respuesta.Codigo = 1;
-                    respuesta.Mensaje = "Ok";
-                }
-                else
-                {
-                    respuesta.Codigo = 0;
-                    respuesta.Mensaje = "No se realizó la transacción";
-                }
-
-                return respuesta;
-            }
-        }
+       
         //Mostrar Doctors activos 
         public RespuestaDoctorObj Consultar_Doctor_Estado(int indicador)
         {
@@ -76,7 +54,7 @@ namespace FisioAPI.Models
 
                 RespuestaDoctorObj respuesta = new RespuestaDoctorObj();
 
-                if (resultado > 0)
+                if (resultado.Count > 0)
                 {
                     List<DoctorObj> datos = new List<DoctorObj>();
 
@@ -84,11 +62,17 @@ namespace FisioAPI.Models
                     {
                         datos.Add(new DoctorObj
                         {
-                            IdDoctor = item.Nombre,
-                            IdUsuario = item.primerApellido,
-                            SalarioBruto = item.segundoApellido,
-                            HoraEntrada = item.cedula,
-                            HoraSalida = item.telefono
+                            IdDoctor = item.IdDoctor,
+                            IdUsuario = item.IdUsuario,
+                            Nombre = item.segundoApellido,
+                            Apellido1 = item.primerApellido,
+                            Apellido2 = item.segundoApellido,
+                            Cedula = item.cedula,
+                            Telefono = item.telefono,
+                            Email = item.Email,
+                            Genero = item.genero,
+                            FechaMacimiento = item.FechaNacimiento,
+                            State = item.state
                         });
                     }
 
@@ -114,7 +98,7 @@ namespace FisioAPI.Models
 
                 RespuestaDoctorObj respuesta = new RespuestaDoctorObj();
 
-                if (resultado > 0)
+                if (resultado.Count > 0)
                 {
                     List<DoctorObj> datos = new List<DoctorObj>();
 
@@ -122,11 +106,17 @@ namespace FisioAPI.Models
                     {
                         datos.Add(new DoctorObj
                         {
-                            IdDoctor = item.idDoctor,
-                            IdUsuario = item.idUsuario,
-                            SalarioBruto = item.salarioBruto,
-                            HoraEntrada = item.horaEntrada,
-                            HoraSalida = item.horaSalida
+                            IdDoctor = item.IdDoctor,
+                            IdUsuario = item.IdUsuario,
+                            Nombre = item.segundoApellido,
+                            Apellido1 = item.primerApellido,
+                            Apellido2 = item.segundoApellido,
+                            Cedula = item.cedula,
+                            Telefono = item.telefono,
+                            Email = item.Email,
+                            Genero = item.genero,
+                            FechaMacimiento = item.FechaNacimiento,
+                            State = item.state
 
                         });
                     }

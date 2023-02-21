@@ -31,9 +31,9 @@ namespace FisioAPI.Database
         public int telefono { get; set; }
         public string email { get; set; }
         public string genero { get; set; }
-        public int edad { get; set; }
+        public System.DateTime FechaNacimiento { get; set; }
         public string Contrasenna { get; set; }
-        public int idTipoPersonaFk { get; set; }
+        public int idTipoUsuarioFk { get; set; }
         public bool state { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -44,6 +44,6 @@ namespace FisioAPI.Database
         public virtual ICollection<Doctores> Doctores { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Expediente> Expediente { get; set; }
-        public virtual TipoPersona TipoPersona { get; set; }
+        public virtual TipoUsuario TipoUsuario { get; set; }
     }
 }

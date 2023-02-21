@@ -9,9 +9,16 @@ namespace FisioAPI.Models
     {
         public int IdDoctor { get; set; }
         public int IdUsuario { get; set; }
-        public decimal SalarioBruto { get; set; }
-        public DateTime HoraEntrada { get; set; }
-        public DateTime HoraSalida { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido1 { get; set; }
+        public string Apellido2 { get; set; }
+        public string Cedula { get; set; }
+        public int Telefono { get; set; }
+        public string Email { get; set; }
+        public string Genero { get; set; }
+        public DateTime FechaMacimiento { get; set; }
+        public int TipoUsuario { get; set; }
+        public bool State { get; set; }
     }
     public class RespuestaDoctorObj
     {

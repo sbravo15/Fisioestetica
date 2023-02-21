@@ -211,6 +211,9 @@
     <Compile Include="Controllers\PlanillaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Database\ABITACORA.cs">
+      <DependentUpon>MOSSAdb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\Citas.cs">
       <DependentUpon>MOSSAdb.tt</DependentUpon>
     </Compile>
@@ -226,7 +229,13 @@
     <Compile Include="Database\Consultar_Datos_Usuario_Result.cs">
       <DependentUpon>MOSSAdb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\Consultar_Doctor_Estado_Result.cs">
+      <DependentUpon>MOSSAdb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\Consultar_Expediente_Paciente_Result.cs">
+      <DependentUpon>MOSSAdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Consultar_IdDoctor_Result.cs">
       <DependentUpon>MOSSAdb.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Consultar_IdPlanilla_Result.cs">
@@ -238,10 +247,19 @@
     <Compile Include="Database\Consultar_Usuarios_Estado_Result.cs">
       <DependentUpon>MOSSAdb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\Dias.cs">
+      <DependentUpon>MOSSAdb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\Doctores.cs">
       <DependentUpon>MOSSAdb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\EBITACORA.cs">
+      <DependentUpon>MOSSAdb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\Expediente.cs">
+      <DependentUpon>MOSSAdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Horario.cs">
       <DependentUpon>MOSSAdb.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\MOSSAdb.Context.cs">
@@ -262,10 +280,7 @@
     <Compile Include="Database\Planilla.cs">
       <DependentUpon>MOSSAdb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\TBITACORA.cs">
-      <DependentUpon>MOSSAdb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\TipoPersona.cs">
+    <Compile Include="Database\TipoUsuario.cs">
       <DependentUpon>MOSSAdb.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Usuario.cs">

@@ -19,19 +19,20 @@ namespace FisioAPI.Database
         {
             this.Citas = new HashSet<Citas>();
             this.Expediente = new HashSet<Expediente>();
+            this.Horario = new HashSet<Horario>();
             this.Planilla = new HashSet<Planilla>();
         }
     
         public int IdDoctor { get; set; }
         public int IdUsuarioFK { get; set; }
-        public System.DateTime HoraEntrada { get; set; }
-        public System.DateTime HoraSalida { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Citas> Citas { get; set; }
         public virtual Usuario Usuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Expediente> Expediente { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Horario> Horario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Planilla> Planilla { get; set; }
     }

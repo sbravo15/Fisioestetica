@@ -1,16 +1,15 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Controllers",
     "\\FisioAPI",
     "\\FisioAPI\\Controllers",
     "\\FisioAPI\\Database",
-    "\\FisioAPI\\Models",
+    "\\Models",
     "\\Views",
     "\\Views\\Sesion",
     "\\Views\\Shared",
     "\\Views\\Usuario"
   ],
-  "SelectedNode": "\\FisioAPI\\Models\\PlanillaModel.cs",
+  "SelectedNode": "\\FisioAPI\\Database",
   "PreviewInSolutionExplorer": false
 }

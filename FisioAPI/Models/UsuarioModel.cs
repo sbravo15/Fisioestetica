@@ -34,8 +34,8 @@ namespace FisioAPI.Models
                     usuarioEncontrado.Telefono = resultado.telefono;
                     usuarioEncontrado.Email = resultado.Email;
                     usuarioEncontrado.Genero = resultado.genero;
-                    usuarioEncontrado.Edad = resultado.edad;
-                    usuarioEncontrado.TipoUsuario = resultado.idTipoPersonaFk;
+                    usuarioEncontrado.FechaMacimiento = resultado.FechaNacimiento;
+                    usuarioEncontrado.TipoUsuario = resultado.idTipoUsuarioFk;
                     usuarioEncontrado.Token = CrearToken(usuario.Email);
 
                     respuesta.Codigo = 1;
@@ -70,7 +70,7 @@ namespace FisioAPI.Models
                 }
 
                 var resultado = con.Registrar_Datos_Usuario(usuario.Nombre, usuario.Apellido1, usuario.Apellido2, usuario.Cedula, usuario.Telefono, usuario.Email,
-                    usuario.Genero, usuario.Edad, usuario.Contrasenna, usuario.TipoUsuario);
+                    usuario.Genero, usuario.FechaMacimiento, usuario.Contrasenna, usuario.TipoUsuario);
 
 
                 if (resultado > 0)
@@ -106,7 +106,7 @@ namespace FisioAPI.Models
                 }
 
                 var resultado = con.Editar_Datos_Usuario(usuario.Nombre, usuario.Apellido1, usuario.Apellido2, usuario.Cedula, usuario.Telefono, usuario.Email,
-                    usuario.Genero, usuario.Edad, usuario.Contrasenna, usuario.TipoUsuario, usuario.State, usuario.IdUsuario);
+                    usuario.Genero, usuario.FechaMacimiento, usuario.Contrasenna, usuario.TipoUsuario, usuario.State, usuario.IdUsuario);
 
                 if (resultado > 0)
                 {
@@ -146,8 +146,8 @@ namespace FisioAPI.Models
                             Telefono = item.telefono,
                             Email = item.Email,
                             Genero = item.genero,
-                            Edad = item.edad,
-                            TipoUsuario = item.idTipoPersonaFk,
+                            FechaMacimiento = item.FechaNacimiento,
+                            TipoUsuario = item.idTipoUsuarioFk,
                             State = item.state
                         });
                     }
@@ -188,8 +188,8 @@ namespace FisioAPI.Models
                     usuarioEncontrado.Telefono = resultado.telefono;
                     usuarioEncontrado.Email = resultado.email;
                     usuarioEncontrado.Genero = resultado.genero;
-                    usuarioEncontrado.Edad = resultado.edad;
-                    usuarioEncontrado.TipoUsuario = resultado.idTipoPersonaFk;
+                    usuarioEncontrado.FechaMacimiento = resultado.FechaNacimiento;
+                    usuarioEncontrado.TipoUsuario = resultado.idTipoUsuarioFk;
                    
                     respuesta.Codigo = 1;
                     respuesta.Mensaje = "Ok";

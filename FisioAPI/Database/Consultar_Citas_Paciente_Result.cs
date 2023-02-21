@@ -14,9 +14,10 @@ namespace FisioAPI.Database
     public partial class Consultar_Citas_Paciente_Result
     {
         public int IdCitas { get; set; }
-        public int IdUsuarioFk { get; set; }
+        public int IdUsuarioFK { get; set; }
         public int IdDoctorFK { get; set; }
-        public string condicion { get; set; }
+        public string Condicion { get; set; }
+        public string Dia { get; set; }
         public System.DateTime Hora { get; set; }
         public bool status { get; set; }
     }

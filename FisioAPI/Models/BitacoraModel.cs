@@ -9,7 +9,7 @@ namespace FisioAPI.Models
         {
             using (var con = new MOSSAEntities())
             {
-                con.Registrar_Bitacora(email, DateTime.Now, ex.HResult, ex.Message, origen);
+                con.Registrar_BitacoraE(email, DateTime.Now, ex.HResult, ex.Message, origen);
 
             }
         }

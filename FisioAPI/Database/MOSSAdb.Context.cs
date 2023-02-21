@@ -27,13 +27,16 @@ namespace FisioAPI.Database
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<ABITACORA> ABITACORA { get; set; }
         public virtual DbSet<Citas> Citas { get; set; }
         public virtual DbSet<Comentarios> Comentarios { get; set; }
+        public virtual DbSet<Dias> Dias { get; set; }
         public virtual DbSet<Doctores> Doctores { get; set; }
+        public virtual DbSet<EBITACORA> EBITACORA { get; set; }
         public virtual DbSet<Expediente> Expediente { get; set; }
+        public virtual DbSet<Horario> Horario { get; set; }
         public virtual DbSet<Planilla> Planilla { get; set; }
-        public virtual DbSet<TBITACORA> TBITACORA { get; set; }
-        public virtual DbSet<TipoPersona> TipoPersona { get; set; }
+        public virtual DbSet<TipoUsuario> TipoUsuario { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
     
         public virtual ObjectResult<Consultar_Citas_Doctor_Result> Consultar_Citas_Doctor(Nullable<int> idDoctor)
@@ -67,6 +70,15 @@ namespace FisioAPI.Database
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Datos_Usuario_Result>("Consultar_Datos_Usuario", emailParameter, contrasennaParameter);
         }
     
+        public virtual ObjectResult<Consultar_Doctor_Estado_Result> Consultar_Doctor_Estado(Nullable<int> indicador)
+        {
+            var indicadorParameter = indicador.HasValue ?
+                new ObjectParameter("indicador", indicador) :
+                new ObjectParameter("indicador", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Doctor_Estado_Result>("Consultar_Doctor_Estado", indicadorParameter);
+        }
+    
         public virtual ObjectResult<Consultar_Expediente_Paciente_Result> Consultar_Expediente_Paciente(Nullable<int> idPaciente)
         {
             var idPacienteParameter = idPaciente.HasValue ?
@@ -74,6 +86,15 @@ namespace FisioAPI.Database
                 new ObjectParameter("IdPaciente", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Expediente_Paciente_Result>("Consultar_Expediente_Paciente", idPacienteParameter);
+        }
+    
+        public virtual ObjectResult<Consultar_IdDoctor_Result> Consultar_IdDoctor(Nullable<int> idDoctor)
+        {
+            var idDoctorParameter = idDoctor.HasValue ?
+                new ObjectParameter("idDoctor", idDoctor) :
+                new ObjectParameter("idDoctor", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_IdDoctor_Result>("Consultar_IdDoctor", idDoctorParameter);
         }
     
         public virtual ObjectResult<Consultar_IdPlanilla_Result> Consultar_IdPlanilla(Nullable<int> idPlanilla)
@@ -103,7 +124,7 @@ namespace FisioAPI.Database
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Usuarios_Estado_Result>("Consultar_Usuarios_Estado", indicadorParameter);
         }
     
-        public virtual int Editar_Citas(Nullable<int> idCita, Nullable<int> idUsuario, Nullable<int> idDoctor, string condicion, Nullable<System.DateTime> hora, Nullable<bool> status)
+        public virtual int Editar_Citas(Nullable<int> idCita, Nullable<int> idUsuario, Nullable<int> idDoctor, string condicion, Nullable<System.DateTime> hora, Nullable<int> dia, Nullable<bool> status)
         {
             var idCitaParameter = idCita.HasValue ?
                 new ObjectParameter("IdCita", idCita) :
@@ -125,14 +146,18 @@ namespace FisioAPI.Database
                 new ObjectParameter("Hora", hora) :
                 new ObjectParameter("Hora", typeof(System.DateTime));
     
+            var diaParameter = dia.HasValue ?
+                new ObjectParameter("Dia", dia) :
+                new ObjectParameter("Dia", typeof(int));
+    
             var statusParameter = status.HasValue ?
                 new ObjectParameter("Status", status) :
                 new ObjectParameter("Status", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Editar_Citas", idCitaParameter, idUsuarioParameter, idDoctorParameter, condicionParameter, horaParameter, statusParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Editar_Citas", idCitaParameter, idUsuarioParameter, idDoctorParameter, condicionParameter, horaParameter, diaParameter, statusParameter);
         }
     
-        public virtual int Editar_Datos_Planilla(Nullable<int> idPlanilla, Nullable<int> idDoctor, Nullable<int> horasT, Nullable<decimal> salBrut, Nullable<decimal> seguro, Nullable<decimal> deducc, Nullable<decimal> extra, Nullable<decimal> salNet)
+        public virtual int Editar_Datos_Planilla(Nullable<int> idPlanilla, Nullable<int> idDoctor, Nullable<System.DateTime> fecha, Nullable<int> horasT, Nullable<decimal> salBrut, Nullable<decimal> seguro, Nullable<decimal> deducc, Nullable<decimal> extra, Nullable<decimal> salNet)
         {
             var idPlanillaParameter = idPlanilla.HasValue ?
                 new ObjectParameter("IdPlanilla", idPlanilla) :
@@ -141,6 +166,10 @@ namespace FisioAPI.Database
             var idDoctorParameter = idDoctor.HasValue ?
                 new ObjectParameter("IdDoctor", idDoctor) :
                 new ObjectParameter("IdDoctor", typeof(int));
+    
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("Fecha", fecha) :
+                new ObjectParameter("Fecha", typeof(System.DateTime));
     
             var horasTParameter = horasT.HasValue ?
                 new ObjectParameter("HorasT", horasT) :
@@ -166,10 +195,10 @@ namespace FisioAPI.Database
                 new ObjectParameter("SalNet", salNet) :
                 new ObjectParameter("SalNet", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Editar_Datos_Planilla", idPlanillaParameter, idDoctorParameter, horasTParameter, salBrutParameter, seguroParameter, deduccParameter, extraParameter, salNetParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Editar_Datos_Planilla", idPlanillaParameter, idDoctorParameter, fechaParameter, horasTParameter, salBrutParameter, seguroParameter, deduccParameter, extraParameter, salNetParameter);
         }
     
-        public virtual int Editar_Datos_Usuario(string nombre, string apellido1, string apellido2, string cedula, Nullable<int> telefono, string email, string genero, Nullable<int> edad, string contrasenna, Nullable<int> tipoUsuario, Nullable<bool> state, Nullable<int> iDusuario)
+        public virtual int Editar_Datos_Usuario(string nombre, string apellido1, string apellido2, string cedula, Nullable<int> telefono, string email, string genero, Nullable<System.DateTime> fechaNacimiento, string contrasenna, Nullable<int> tipoUsuario, Nullable<bool> state, Nullable<int> iDusuario)
         {
             var nombreParameter = nombre != null ?
                 new ObjectParameter("Nombre", nombre) :
@@ -199,9 +228,9 @@ namespace FisioAPI.Database
                 new ObjectParameter("Genero", genero) :
                 new ObjectParameter("Genero", typeof(string));
     
-            var edadParameter = edad.HasValue ?
-                new ObjectParameter("Edad", edad) :
-                new ObjectParameter("Edad", typeof(int));
+            var fechaNacimientoParameter = fechaNacimiento.HasValue ?
+                new ObjectParameter("FechaNacimiento", fechaNacimiento) :
+                new ObjectParameter("FechaNacimiento", typeof(System.DateTime));
     
             var contrasennaParameter = contrasenna != null ?
                 new ObjectParameter("Contrasenna", contrasenna) :
@@ -219,7 +248,7 @@ namespace FisioAPI.Database
                 new ObjectParameter("IDusuario", iDusuario) :
                 new ObjectParameter("IDusuario", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Editar_Datos_Usuario", nombreParameter, apellido1Parameter, apellido2Parameter, cedulaParameter, telefonoParameter, emailParameter, generoParameter, edadParameter, contrasennaParameter, tipoUsuarioParameter, stateParameter, iDusuarioParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Editar_Datos_Usuario", nombreParameter, apellido1Parameter, apellido2Parameter, cedulaParameter, telefonoParameter, emailParameter, generoParameter, fechaNacimientoParameter, contrasennaParameter, tipoUsuarioParameter, stateParameter, iDusuarioParameter);
         }
     
         public virtual int Editar_Expediente(Nullable<int> idExpediente, Nullable<int> idUsuario, Nullable<int> idDoctor, string padecimiento, string tratamiento)
@@ -247,7 +276,28 @@ namespace FisioAPI.Database
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Editar_Expediente", idExpedienteParameter, idUsuarioParameter, idDoctorParameter, padecimientoParameter, tratamientoParameter);
         }
     
-        public virtual int Registrar_Bitacora(string email, Nullable<System.DateTime> fechaHora, Nullable<int> codigoError, string descripcion, string origen)
+        public virtual int Registrar_BitacoraA(string email, Nullable<System.DateTime> fechaHora, string descripcion, string origen)
+        {
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var fechaHoraParameter = fechaHora.HasValue ?
+                new ObjectParameter("FechaHora", fechaHora) :
+                new ObjectParameter("FechaHora", typeof(System.DateTime));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var origenParameter = origen != null ?
+                new ObjectParameter("Origen", origen) :
+                new ObjectParameter("Origen", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Registrar_BitacoraA", emailParameter, fechaHoraParameter, descripcionParameter, origenParameter);
+        }
+    
+        public virtual int Registrar_BitacoraE(string email, Nullable<System.DateTime> fechaHora, Nullable<int> codigoError, string descripcion, string origen)
         {
             var emailParameter = email != null ?
                 new ObjectParameter("Email", email) :
@@ -269,10 +319,10 @@ namespace FisioAPI.Database
                 new ObjectParameter("Origen", origen) :
                 new ObjectParameter("Origen", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Registrar_Bitacora", emailParameter, fechaHoraParameter, codigoErrorParameter, descripcionParameter, origenParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Registrar_BitacoraE", emailParameter, fechaHoraParameter, codigoErrorParameter, descripcionParameter, origenParameter);
         }
     
-        public virtual int Registrar_Cita(Nullable<int> idUsuario, Nullable<int> idDoctor, string condicion, Nullable<System.DateTime> hora)
+        public virtual int Registrar_Cita(Nullable<int> idUsuario, Nullable<int> idDoctor, string condicion, Nullable<System.DateTime> hora, Nullable<int> dia)
         {
             var idUsuarioParameter = idUsuario.HasValue ?
                 new ObjectParameter("IdUsuario", idUsuario) :
@@ -290,10 +340,14 @@ namespace FisioAPI.Database
                 new ObjectParameter("Hora", hora) :
                 new ObjectParameter("Hora", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Registrar_Cita", idUsuarioParameter, idDoctorParameter, condicionParameter, horaParameter);
+            var diaParameter = dia.HasValue ?
+                new ObjectParameter("Dia", dia) :
+                new ObjectParameter("Dia", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Registrar_Cita", idUsuarioParameter, idDoctorParameter, condicionParameter, horaParameter, diaParameter);
         }
     
-        public virtual int Registrar_Datos_Usuario(string nombre, string apellido1, string apellido2, string cedula, Nullable<int> telefono, string email, string genero, Nullable<int> edad, string contrasenna, Nullable<int> tipoUsuario)
+        public virtual int Registrar_Datos_Usuario(string nombre, string apellido1, string apellido2, string cedula, Nullable<int> telefono, string email, string genero, Nullable<System.DateTime> fechaNacimiento, string contrasenna, Nullable<int> tipoUsuario)
         {
             var nombreParameter = nombre != null ?
                 new ObjectParameter("Nombre", nombre) :
@@ -323,9 +377,9 @@ namespace FisioAPI.Database
                 new ObjectParameter("Genero", genero) :
                 new ObjectParameter("Genero", typeof(string));
     
-            var edadParameter = edad.HasValue ?
-                new ObjectParameter("Edad", edad) :
-                new ObjectParameter("Edad", typeof(int));
+            var fechaNacimientoParameter = fechaNacimiento.HasValue ?
+                new ObjectParameter("FechaNacimiento", fechaNacimiento) :
+                new ObjectParameter("FechaNacimiento", typeof(System.DateTime));
     
             var contrasennaParameter = contrasenna != null ?
                 new ObjectParameter("Contrasenna", contrasenna) :
@@ -335,7 +389,16 @@ namespace FisioAPI.Database
                 new ObjectParameter("TipoUsuario", tipoUsuario) :
                 new ObjectParameter("TipoUsuario", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Registrar_Datos_Usuario", nombreParameter, apellido1Parameter, apellido2Parameter, cedulaParameter, telefonoParameter, emailParameter, generoParameter, edadParameter, contrasennaParameter, tipoUsuarioParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Registrar_Datos_Usuario", nombreParameter, apellido1Parameter, apellido2Parameter, cedulaParameter, telefonoParameter, emailParameter, generoParameter, fechaNacimientoParameter, contrasennaParameter, tipoUsuarioParameter);
+        }
+    
+        public virtual int Registrar_Doctor(Nullable<int> idUsuario)
+        {
+            var idUsuarioParameter = idUsuario.HasValue ?
+                new ObjectParameter("IdUsuario", idUsuario) :
+                new ObjectParameter("IdUsuario", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Registrar_Doctor", idUsuarioParameter);
         }
     
         public virtual int Registrar_Expediente(Nullable<int> idUsuario, Nullable<int> idDoctor, string padecimiento, string tratamiento)
@@ -359,11 +422,15 @@ namespace FisioAPI.Database
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Registrar_Expediente", idUsuarioParameter, idDoctorParameter, padecimientoParameter, tratamientoParameter);
         }
     
-        public virtual int Registrar_Planilla(Nullable<int> idDoctor, Nullable<int> horasT, Nullable<decimal> salBrut, Nullable<decimal> seguro, Nullable<decimal> deducc, Nullable<decimal> extra, Nullable<decimal> salNet)
+        public virtual int Registrar_Planilla(Nullable<int> idDoctor, Nullable<System.DateTime> fecha, Nullable<int> horasT, Nullable<decimal> salBrut, Nullable<decimal> seguro, Nullable<decimal> deducc, Nullable<decimal> extra, Nullable<decimal> salNet)
         {
             var idDoctorParameter = idDoctor.HasValue ?
                 new ObjectParameter("IdDoctor", idDoctor) :
                 new ObjectParameter("IdDoctor", typeof(int));
+    
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("Fecha", fecha) :
+                new ObjectParameter("Fecha", typeof(System.DateTime));
     
             var horasTParameter = horasT.HasValue ?
                 new ObjectParameter("HorasT", horasT) :
@@ -389,7 +456,7 @@ namespace FisioAPI.Database
                 new ObjectParameter("SalNet", salNet) :
                 new ObjectParameter("SalNet", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Registrar_Planilla", idDoctorParameter, horasTParameter, salBrutParameter, seguroParameter, deduccParameter, extraParameter, salNetParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Registrar_Planilla", idDoctorParameter, fechaParameter, horasTParameter, salBrutParameter, seguroParameter, deduccParameter, extraParameter, salNetParameter);
         }
     }
 }

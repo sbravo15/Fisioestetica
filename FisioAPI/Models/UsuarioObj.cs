@@ -15,7 +15,7 @@ namespace FisioAPI.Models
         public int Telefono { get; set; }
         public string Email { get; set; }
         public string Genero { get; set; }
-        public int Edad { get; set; }
+        public DateTime FechaMacimiento { get; set; }
         public int TipoUsuario { get; set; }
         public bool State { get; set; }
 

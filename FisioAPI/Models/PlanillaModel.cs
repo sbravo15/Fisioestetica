@@ -17,7 +17,7 @@ namespace FisioAPI.Models
             {
                 RespuestaPlanillaObj respuesta = new RespuestaPlanillaObj();
 
-                var resultado = con.Registrar_Planilla(planilla.IdDoctor, planilla.HorasTrabajadas, planilla.SalarioBruto, planilla.Seguro, planilla.Deducciones, planilla.PagosExtra,
+                var resultado = con.Registrar_Planilla(planilla.IdDoctor, planilla.Fecha ,planilla.HorasTrabajadas, planilla.SalarioBruto, planilla.Seguro, planilla.Deducciones, planilla.PagosExtra,
                     planilla.SalarioNeto);
 
 
@@ -42,7 +42,7 @@ namespace FisioAPI.Models
             {
                 RespuestaPlanillaObj respuesta = new RespuestaPlanillaObj();
 
-                var resultado = con.Editar_Datos_Planilla(planilla.IdPlanilla, planilla.IdDoctor, planilla.HorasTrabajadas, planilla.SalarioBruto, planilla.Seguro, planilla.Deducciones, planilla.PagosExtra,
+                var resultado = con.Editar_Datos_Planilla(planilla.IdPlanilla, planilla.IdDoctor, planilla.Fecha, planilla.HorasTrabajadas, planilla.SalarioBruto, planilla.Seguro, planilla.Deducciones, planilla.PagosExtra,
                     planilla.SalarioNeto);
 
                 if (resultado > 0)
@@ -78,6 +78,7 @@ namespace FisioAPI.Models
                         {
                             IdPlanilla = item.idPlanilla,
                             IdDoctor = item.IdDoctorFK,
+                            Fecha = item.Fecha,
                             HorasTrabajadas = item.horasTrabajadas,
                             SalarioBruto = item.salarioBruto,
                             Seguro = item.seguro,
@@ -118,6 +119,7 @@ namespace FisioAPI.Models
                         {
                             IdPlanilla = item.idPlanilla,
                             IdDoctor = item.IdDoctorFK,
+                            Fecha = item.Fecha,
                             HorasTrabajadas = item.horasTrabajadas,
                             SalarioBruto = item.salarioBruto,
                             Seguro = item.seguro,
@@ -161,6 +163,7 @@ namespace FisioAPI.Models
                         {
                             IdPlanilla = item.idPlanilla,
                             IdDoctor = item.IdDoctorFK,
+                            Fecha = item.Fecha,
                             HorasTrabajadas = item.horasTrabajadas,
                             SalarioBruto = item.salarioBruto,
                             Seguro = item.seguro,

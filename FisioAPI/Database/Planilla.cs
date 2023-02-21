@@ -16,6 +16,7 @@ namespace FisioAPI.Database
     {
         public int idPlanilla { get; set; }
         public int IdDoctorFK { get; set; }
+        public System.DateTime Fecha { get; set; }
         public int horasTrabajadas { get; set; }
         public decimal salarioBruto { get; set; }
         public int seguro { get; set; }

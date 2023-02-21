@@ -9,6 +9,7 @@ namespace FisioAPI.Models
     {
         public int IdPlanilla { get; set; }
         public int IdDoctor { get; set; }
+        public DateTime Fecha { get; set; }
         public int HorasTrabajadas { get; set; }
         public decimal SalarioBruto { get; set; }
         public decimal Seguro { get; set; }

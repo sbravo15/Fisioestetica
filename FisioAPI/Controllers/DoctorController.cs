@@ -33,23 +33,8 @@ namespace FisioAPI.Controllers
             }
         }
 
-        [AllowAnonymous]
-        [HttpPost]
-        [Route("api/Doctor/Editar_Doctor")]
-        public RespuestaDoctorObj Editar_Doctor(DoctorObj Doctor)
-        {
-            try
-            {
-                return instanciaDoctor.Editar_Doctor(Doctor);
-            }
-            catch (Exception ex)
-            {
-                RespuestaDoctorObj respuesta = new RespuestaDoctorObj();
-                respuesta.Codigo = -1;
-                respuesta.Mensaje = "Se presentó un error inesperado";
-                return respuesta;
-            }
-        }
+        
+        
 
         [AllowAnonymous]
         [HttpGet]

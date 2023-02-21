@@ -15,7 +15,7 @@ namespace FisioAPI.Database
     public partial class Comentarios
     {
         public int idComentarios { get; set; }
-        public Nullable<int> idUsuariosFk { get; set; }
+        public int idUsuariosFk { get; set; }
         public string textoComentario { get; set; }
     
         public virtual Usuario Usuario { get; set; }
