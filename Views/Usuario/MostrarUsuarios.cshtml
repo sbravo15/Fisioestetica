@@ -1,0 +1,106 @@
+﻿@model IEnumerable<G7.Models.UsuarioObj>
+
+@{
+    ViewBag.Title = "MostrarUsuarios";
+}
+
+<h2>MostrarUsuarios</h2>
+
+<p>
+    @Html.ActionLink("Registrar Usuarios", "RegistrarUsuarios", "Usuario", null, new { @class = "btn btn-dark" })
+</p>
+<br>
+<br>
+<table class="table">
+    <tr>
+        <th>
+            IdUsuario
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Primer Apellido1
+        </th>
+        <th>
+            Segundo Apellido
+        </th>
+        <th>
+            Cedula
+        </th>
+        <th>
+            Telefono
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Genero
+        </th>
+        <th>
+            Edad
+        </th>
+        <th>
+            Tipo de Usuario
+        </th>
+        <th>
+            Estado
+        </th>
+        <th>
+            Acciones
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cedula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Edad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+
+                @Html.ActionLink("Editar", "EditarUsuarios", "Usuario", new { id = item.IdUsuario }, new { @class = "btn btn-secondary" })
+
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Cambiar Estado
+                </button>
+
+
+
+            </td>
+        </tr>
+    }
+
+</table>

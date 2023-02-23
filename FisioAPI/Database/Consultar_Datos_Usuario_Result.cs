@@ -22,6 +22,7 @@ namespace FisioAPI.Database
         public string Email { get; set; }
         public string genero { get; set; }
         public System.DateTime FechaNacimiento { get; set; }
+        public string Contrasenna { get; set; }
         public int idTipoUsuarioFk { get; set; }
         public bool state { get; set; }
     }

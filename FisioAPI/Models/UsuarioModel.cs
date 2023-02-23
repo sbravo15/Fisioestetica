@@ -26,7 +26,7 @@ namespace FisioAPI.Models
                 {
                     UsuarioObj usuarioEncontrado = new UsuarioObj();
 
-                    /*usuarioEncontrado.IdUsuario = resultado.IdUsuario;*/
+                    usuarioEncontrado.IdUsuario = resultado.IdUsuario;
                     usuarioEncontrado.Nombre = resultado.Nombre;
                     usuarioEncontrado.Apellido1 = resultado.primerApellido;
                     usuarioEncontrado.Apellido2 = resultado.segundoApellido;
@@ -37,6 +37,7 @@ namespace FisioAPI.Models
                     usuarioEncontrado.FechaMacimiento = resultado.FechaNacimiento;
                     usuarioEncontrado.TipoUsuario = resultado.idTipoUsuarioFk;
                     usuarioEncontrado.Token = CrearToken(usuario.Email);
+                    usuarioEncontrado.State = resultado.state;
 
                     respuesta.Codigo = 1;
                     respuesta.Mensaje = "Ok";

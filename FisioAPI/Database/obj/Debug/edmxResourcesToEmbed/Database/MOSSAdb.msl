@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MOSSAModelStoreContainer" CdmEntityContainer="MOSSAEntities">
+    <EntitySetMapping Name="ABITACORA">
+      <EntityTypeMapping TypeName="MOSSAModel.ABITACORA">
+        <MappingFragment StoreEntitySet="ABITACORA">
+          <ScalarProperty Name="ConsecutivoAccion" ColumnName="ConsecutivoAccion" />
+          <ScalarProperty Name="IDusuario" ColumnName="IDusuario" />
+          <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Origen" ColumnName="Origen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Citas">
+      <EntityTypeMapping TypeName="MOSSAModel.Citas">
+        <MappingFragment StoreEntitySet="Citas">
+          <ScalarProperty Name="IdCitas" ColumnName="IdCitas" />
+          <ScalarProperty Name="IdUsuarioFk" ColumnName="IdUsuarioFk" />
+          <ScalarProperty Name="IdDoctorFK" ColumnName="IdDoctorFK" />
+          <ScalarProperty Name="condicion" ColumnName="condicion" />
+          <ScalarProperty Name="Dia" ColumnName="Dia" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comentarios">
+      <EntityTypeMapping TypeName="MOSSAModel.Comentarios">
+        <MappingFragment StoreEntitySet="Comentarios">
+          <ScalarProperty Name="idComentarios" ColumnName="idComentarios" />
+          <ScalarProperty Name="idUsuariosFk" ColumnName="idUsuariosFk" />
+          <ScalarProperty Name="textoComentario" ColumnName="textoComentario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dias">
+      <EntityTypeMapping TypeName="MOSSAModel.Dias">
+        <MappingFragment StoreEntitySet="Dias">
+          <ScalarProperty Name="idDia" ColumnName="idDia" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Doctores">
+      <EntityTypeMapping TypeName="MOSSAModel.Doctores">
+        <MappingFragment StoreEntitySet="Doctores">
+          <ScalarProperty Name="IdDoctor" ColumnName="IdDoctor" />
+          <ScalarProperty Name="IdUsuarioFK" ColumnName="IdUsuarioFK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EBITACORA">
+      <EntityTypeMapping TypeName="MOSSAModel.EBITACORA">
+        <MappingFragment StoreEntitySet="EBITACORA">
+          <ScalarProperty Name="ConsecutivoError" ColumnName="ConsecutivoError" />
+          <ScalarProperty Name="IDusuario" ColumnName="IDusuario" />
+          <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+          <ScalarProperty Name="CodigoError" ColumnName="CodigoError" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Origen" ColumnName="Origen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Expediente">
+      <EntityTypeMapping TypeName="MOSSAModel.Expediente">
+        <MappingFragment StoreEntitySet="Expediente">
+          <ScalarProperty Name="IdExpediente" ColumnName="IdExpediente" />
+          <ScalarProperty Name="IdUsuarioFk" ColumnName="IdUsuarioFk" />
+          <ScalarProperty Name="IdDoctorFK" ColumnName="IdDoctorFK" />
+          <ScalarProperty Name="Padecimiento" ColumnName="Padecimiento" />
+          <ScalarProperty Name="Tratamiento" ColumnName="Tratamiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Horario">
+      <EntityTypeMapping TypeName="MOSSAModel.Horario">
+        <MappingFragment StoreEntitySet="Horario">
+          <ScalarProperty Name="idHorario" ColumnName="idHorario" />
+          <ScalarProperty Name="IdDiaFK" ColumnName="IdDiaFK" />
+          <ScalarProperty Name="IdDoctorFK" ColumnName="IdDoctorFK" />
+          <ScalarProperty Name="HoraEntrada" ColumnName="HoraEntrada" />
+          <ScalarProperty Name="HoraSalida" ColumnName="HoraSalida" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Planilla">
+      <EntityTypeMapping TypeName="MOSSAModel.Planilla">
+        <MappingFragment StoreEntitySet="Planilla">
+          <ScalarProperty Name="idPlanilla" ColumnName="idPlanilla" />
+          <ScalarProperty Name="IdDoctorFK" ColumnName="IdDoctorFK" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="horasTrabajadas" ColumnName="horasTrabajadas" />
+          <ScalarProperty Name="salarioBruto" ColumnName="salarioBruto" />
+          <ScalarProperty Name="seguro" ColumnName="seguro" />
+          <ScalarProperty Name="deducciones" ColumnName="deducciones" />
+          <ScalarProperty Name="pagosExtra" ColumnName="pagosExtra" />
+          <ScalarProperty Name="salarioNeto" ColumnName="salarioNeto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoUsuario">
+      <EntityTypeMapping TypeName="MOSSAModel.TipoUsuario">
+        <MappingFragment StoreEntitySet="TipoUsuario">
+          <ScalarProperty Name="idTipoUsuario" ColumnName="idTipoUsuario" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="MOSSAModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+          <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="genero" ColumnName="genero" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="Contrasenna" ColumnName="Contrasenna" />
+          <ScalarProperty Name="idTipoUsuarioFk" ColumnName="idTipoUsuarioFk" />
+          <ScalarProperty Name="state" ColumnName="state" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Consultar_Citas_Doctor" FunctionName="MOSSAModel.Store.Consultar_Citas_Doctor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MOSSAModel.Consultar_Citas_Doctor_Result">
+          <ScalarProperty Name="IdCitas" ColumnName="IdCitas" />
+          <ScalarProperty Name="IdUsuarioFK" ColumnName="IdUsuarioFK" />
+          <ScalarProperty Name="IdDoctorFK" ColumnName="IdDoctorFK" />
+          <ScalarProperty Name="Condicion" ColumnName="Condicion" />
+          <ScalarProperty Name="Dia" ColumnName="Dia" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Consultar_Citas_Paciente" FunctionName="MOSSAModel.Store.Consultar_Citas_Paciente">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MOSSAModel.Consultar_Citas_Paciente_Result">
+          <ScalarProperty Name="IdCitas" ColumnName="IdCitas" />
+          <ScalarProperty Name="IdUsuarioFK" ColumnName="IdUsuarioFK" />
+          <ScalarProperty Name="IdDoctorFK" ColumnName="IdDoctorFK" />
+          <ScalarProperty Name="Condicion" ColumnName="Condicion" />
+          <ScalarProperty Name="Dia" ColumnName="Dia" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Consultar_Datos_Usuario" FunctionName="MOSSAModel.Store.Consultar_Datos_Usuario">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MOSSAModel.Consultar_Datos_Usuario_Result">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+          <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="genero" ColumnName="genero" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="idTipoPersonaFk" ColumnName="idTipoPersonaFk" />
+          <ScalarProperty Name="state" ColumnName="state" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Consultar_Doctor_Estado" FunctionName="MOSSAModel.Store.Consultar_Doctor_Estado">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MOSSAModel.Consultar_Doctor_Estado_Result">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdDoctor" ColumnName="IdDoctor" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+          <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="genero" ColumnName="genero" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="state" ColumnName="state" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Consultar_Expediente_Paciente" FunctionName="MOSSAModel.Store.Consultar_Expediente_Paciente">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MOSSAModel.Consultar_Expediente_Paciente_Result">
+          <ScalarProperty Name="IdExpediente" ColumnName="IdExpediente" />
+          <ScalarProperty Name="IdUsuarioFk" ColumnName="IdUsuarioFk" />
+          <ScalarProperty Name="IdDoctorFK" ColumnName="IdDoctorFK" />
+          <ScalarProperty Name="Padecimiento" ColumnName="Padecimiento" />
+          <ScalarProperty Name="Tratamiento" ColumnName="Tratamiento" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Consultar_IdDoctor" FunctionName="MOSSAModel.Store.Consultar_IdDoctor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MOSSAModel.Consultar_IdDoctor_Result">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdDoctor" ColumnName="IdDoctor" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+          <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="genero" ColumnName="genero" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="state" ColumnName="state" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Consultar_IdPlanilla" FunctionName="MOSSAModel.Store.Consultar_IdPlanilla">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MOSSAModel.Consultar_IdPlanilla_Result">
+          <ScalarProperty Name="idPlanilla" ColumnName="idPlanilla" />
+          <ScalarProperty Name="IdDoctorFK" ColumnName="IdDoctorFK" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="horasTrabajadas" ColumnName="horasTrabajadas" />
+          <ScalarProperty Name="salarioBruto" ColumnName="salarioBruto" />
+          <ScalarProperty Name="seguro" ColumnName="seguro" />
+          <ScalarProperty Name="deducciones" ColumnName="deducciones" />
+          <ScalarProperty Name="pagosExtra" ColumnName="pagosExtra" />
+          <ScalarProperty Name="salarioNeto" ColumnName="salarioNeto" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Consultar_Planilla_Doctor" FunctionName="MOSSAModel.Store.Consultar_Planilla_Doctor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MOSSAModel.Consultar_Planilla_Doctor_Result">
+          <ScalarProperty Name="idPlanilla" ColumnName="idPlanilla" />
+          <ScalarProperty Name="IdDoctorFK" ColumnName="IdDoctorFK" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="horasTrabajadas" ColumnName="horasTrabajadas" />
+          <ScalarProperty Name="salarioBruto" ColumnName="salarioBruto" />
+          <ScalarProperty Name="seguro" ColumnName="seguro" />
+          <ScalarProperty Name="deducciones" ColumnName="deducciones" />
+          <ScalarProperty Name="pagosExtra" ColumnName="pagosExtra" />
+          <ScalarProperty Name="salarioNeto" ColumnName="salarioNeto" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Consultar_Usuarios_Estado" FunctionName="MOSSAModel.Store.Consultar_Usuarios_Estado">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MOSSAModel.Consultar_Usuarios_Estado_Result">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+          <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="genero" ColumnName="genero" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="idTipoUsuarioFk" ColumnName="idTipoUsuarioFk" />
+          <ScalarProperty Name="state" ColumnName="state" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Editar_Citas" FunctionName="MOSSAModel.Store.Editar_Citas" />
+    <FunctionImportMapping FunctionImportName="Editar_Datos_Planilla" FunctionName="MOSSAModel.Store.Editar_Datos_Planilla" />
+    <FunctionImportMapping FunctionImportName="Editar_Datos_Usuario" FunctionName="MOSSAModel.Store.Editar_Datos_Usuario" />
+    <FunctionImportMapping FunctionImportName="Editar_Expediente" FunctionName="MOSSAModel.Store.Editar_Expediente" />
+    <FunctionImportMapping FunctionImportName="Registrar_BitacoraA" FunctionName="MOSSAModel.Store.Registrar_BitacoraA" />
+    <FunctionImportMapping FunctionImportName="Registrar_BitacoraE" FunctionName="MOSSAModel.Store.Registrar_BitacoraE" />
+    <FunctionImportMapping FunctionImportName="Registrar_Cita" FunctionName="MOSSAModel.Store.Registrar_Cita" />
+    <FunctionImportMapping FunctionImportName="Registrar_Datos_Usuario" FunctionName="MOSSAModel.Store.Registrar_Datos_Usuario" />
+    <FunctionImportMapping FunctionImportName="Registrar_Doctor" FunctionName="MOSSAModel.Store.Registrar_Doctor" />
+    <FunctionImportMapping FunctionImportName="Registrar_Expediente" FunctionName="MOSSAModel.Store.Registrar_Expediente" />
+    <FunctionImportMapping FunctionImportName="Registrar_Planilla" FunctionName="MOSSAModel.Store.Registrar_Planilla" />
+  </EntityContainerMapping>
+</Mapping>

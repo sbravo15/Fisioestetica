@@ -132,7 +132,6 @@
           <ScalarProperty Name="IdUsuarioFK" ColumnName="IdUsuarioFK" />
           <ScalarProperty Name="IdDoctorFK" ColumnName="IdDoctorFK" />
           <ScalarProperty Name="Condicion" ColumnName="Condicion" />
-          <ScalarProperty Name="Dia" ColumnName="Dia" />
           <ScalarProperty Name="Hora" ColumnName="Hora" />
           <ScalarProperty Name="status" ColumnName="status" />
         </ComplexTypeMapping>
@@ -145,7 +144,6 @@
           <ScalarProperty Name="IdUsuarioFK" ColumnName="IdUsuarioFK" />
           <ScalarProperty Name="IdDoctorFK" ColumnName="IdDoctorFK" />
           <ScalarProperty Name="Condicion" ColumnName="Condicion" />
-          <ScalarProperty Name="Dia" ColumnName="Dia" />
           <ScalarProperty Name="Hora" ColumnName="Hora" />
           <ScalarProperty Name="status" ColumnName="status" />
         </ComplexTypeMapping>
@@ -163,7 +161,8 @@
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="genero" ColumnName="genero" />
           <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
-          <ScalarProperty Name="idTipoPersonaFk" ColumnName="idTipoPersonaFk" />
+          <ScalarProperty Name="Contrasenna" ColumnName="Contrasenna" />
+          <ScalarProperty Name="idTipoUsuarioFk" ColumnName="idTipoUsuarioFk" />
           <ScalarProperty Name="state" ColumnName="state" />
         </ComplexTypeMapping>
       </ResultMapping>

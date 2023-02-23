@@ -18,11 +18,10 @@ namespace FisioAPI.Database
         public int IdUsuarioFk { get; set; }
         public int IdDoctorFK { get; set; }
         public string condicion { get; set; }
-        public int Dia { get; set; }
+        public System.DateTime Dia { get; set; }
         public System.DateTime Hora { get; set; }
         public bool status { get; set; }
     
-        public virtual Dias Dias { get; set; }
         public virtual Doctores Doctores { get; set; }
         public virtual Usuario Usuario { get; set; }
     }

@@ -11,11 +11,11 @@ namespace G7.Models
         public string Nombre { get; set; }
         public string Apellido1 { get; set; }
         public string Apellido2 { get; set; }
-        public int Cedula { get; set; }
+        public string Cedula { get; set; }
         public int Telefono { get; set; }
         public string Email { get; set; }
-        public int Genero { get; set; }
-        public int Edad { get; set; }
+        public string Genero { get; set; }
+        public DateTime FechaNacimiento { get; set; }
         public int TipoUsuario { get; set; }
         public bool State { get; set; }
 

@@ -151,7 +151,7 @@ CREATE TABLE [dbo].[Citas](
 	[IdUsuarioFk] [int] NOT NULL,
 	[IdDoctorFK] [int] NOT NULL,
 	[condicion] [varchar](255) NOT NULL,
-	[Dia][int] NOT NULL,
+	[Dia][DATE] NOT NULL,
 	[Hora] [datetime] NOT NULL,
 	[status] [bit] NOT NULL,
 PRIMARY KEY CLUSTERED 
@@ -211,9 +211,6 @@ REFERENCES [dbo].[TipoUsuario] ([idTipoUsuario])
 GO
 ALTER TABLE [dbo].[Citas]  WITH CHECK ADD FOREIGN KEY([IdDoctorFK])
 REFERENCES [dbo].[Doctores] ([IdDoctor])
-GO
-ALTER TABLE [dbo].[Citas]  WITH CHECK ADD FOREIGN KEY([Dia])
-REFERENCES [dbo].[Dias] ([IdDia])
 GO
 ALTER TABLE [dbo].[Citas]  WITH CHECK ADD FOREIGN KEY([IdUsuarioFk])
 REFERENCES [dbo].[Usuario] ([IdUsuario])
@@ -356,8 +353,8 @@ BEGIN
 			Email,
 			genero,
 			FechaNacimiento,
-			Contrasenna
-			idTipoPersonaFk,
+			Contrasenna,
+			idTipoUsuarioFk,
 			state
 			
 	FROM	dbo.Usuario
@@ -545,7 +542,7 @@ CREATE PROCEDURE [dbo].[Registrar_Cita]
 	@IdDoctor int,
 	@Condicion varchar(1000),
 	@Hora datetime,
-	@Dia int
+	@Dia date
 AS
 BEGIN
 
@@ -562,7 +559,7 @@ CREATE PROCEDURE [dbo].[Editar_Citas]
 	@IdDoctor int,
 	@Condicion varchar(1000),
 	@Hora datetime,
-	@Dia int,
+	@Dia date,
 	@Status bit
 	
 AS
@@ -588,10 +585,8 @@ CREATE PROCEDURE [dbo].[Consultar_Citas_Doctor]
 AS
 BEGIN
 
-	SELECT	C.IdCitas, C.IdUsuarioFK, C.IdDoctorFK, C.Condicion, D.descripcion 'Dia',C.Hora, C.status
-	FROM	dbo.Citas C
-	INNER JOIN dbo.Dias D
-	ON	C.Dia = D.idDia
+	SELECT	IdCitas, IdUsuarioFK, IdDoctorFK, Condicion,Hora, status
+	FROM	dbo.Citas 
 	WHERE IdDoctorFK = @IdDoctor
 
 END
@@ -603,10 +598,8 @@ CREATE PROCEDURE [dbo].[Consultar_Citas_Paciente]
 AS
 BEGIN
 
-	SELECT	C.IdCitas, C.IdUsuarioFK, C.IdDoctorFK, C.Condicion, D.descripcion 'Dia',C.Hora, C.status
-	FROM	dbo.Citas C
-	INNER JOIN dbo.Dias D
-	ON	C.Dia = D.idDia
+	SELECT	IdCitas, IdUsuarioFK, IdDoctorFK, Condicion,Hora, status
+	FROM	dbo.Citas 
 	WHERE	IdUsuarioFk = @IdPaciente
 
 END
@@ -695,3 +688,7 @@ GO
 INSERT INTO dbo.TipoUsuario(descripcion)
 VALUES ('Doctor');
 GO
+INSERT INTO dbo.TipoUsuario(descripcion)
+VALUES ('Admin');
+GO
+

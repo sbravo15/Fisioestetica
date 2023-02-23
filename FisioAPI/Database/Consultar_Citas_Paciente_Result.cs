@@ -17,7 +17,6 @@ namespace FisioAPI.Database
         public int IdUsuarioFK { get; set; }
         public int IdDoctorFK { get; set; }
         public string Condicion { get; set; }
-        public string Dia { get; set; }
         public System.DateTime Hora { get; set; }
         public bool status { get; set; }
     }

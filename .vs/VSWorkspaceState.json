@@ -10,6 +10,6 @@
     "\\Views\\Shared",
     "\\Views\\Usuario"
   ],
-  "SelectedNode": "\\FisioAPI\\Database",
+  "SelectedNode": "\\Views\\Shared\\_LayoutLogin.cshtml",
   "PreviewInSolutionExplorer": false
 }

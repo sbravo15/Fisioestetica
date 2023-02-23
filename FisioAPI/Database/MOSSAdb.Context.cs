@@ -124,7 +124,7 @@ namespace FisioAPI.Database
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Usuarios_Estado_Result>("Consultar_Usuarios_Estado", indicadorParameter);
         }
     
-        public virtual int Editar_Citas(Nullable<int> idCita, Nullable<int> idUsuario, Nullable<int> idDoctor, string condicion, Nullable<System.DateTime> hora, Nullable<int> dia, Nullable<bool> status)
+        public virtual int Editar_Citas(Nullable<int> idCita, Nullable<int> idUsuario, Nullable<int> idDoctor, string condicion, Nullable<System.DateTime> hora, Nullable<System.DateTime> dia, Nullable<bool> status)
         {
             var idCitaParameter = idCita.HasValue ?
                 new ObjectParameter("IdCita", idCita) :
@@ -148,7 +148,7 @@ namespace FisioAPI.Database
     
             var diaParameter = dia.HasValue ?
                 new ObjectParameter("Dia", dia) :
-                new ObjectParameter("Dia", typeof(int));
+                new ObjectParameter("Dia", typeof(System.DateTime));
     
             var statusParameter = status.HasValue ?
                 new ObjectParameter("Status", status) :
@@ -322,7 +322,7 @@ namespace FisioAPI.Database
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Registrar_BitacoraE", emailParameter, fechaHoraParameter, codigoErrorParameter, descripcionParameter, origenParameter);
         }
     
-        public virtual int Registrar_Cita(Nullable<int> idUsuario, Nullable<int> idDoctor, string condicion, Nullable<System.DateTime> hora, Nullable<int> dia)
+        public virtual int Registrar_Cita(Nullable<int> idUsuario, Nullable<int> idDoctor, string condicion, Nullable<System.DateTime> hora, Nullable<System.DateTime> dia)
         {
             var idUsuarioParameter = idUsuario.HasValue ?
                 new ObjectParameter("IdUsuario", idUsuario) :
@@ -342,7 +342,7 @@ namespace FisioAPI.Database
     
             var diaParameter = dia.HasValue ?
                 new ObjectParameter("Dia", dia) :
-                new ObjectParameter("Dia", typeof(int));
+                new ObjectParameter("Dia", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Registrar_Cita", idUsuarioParameter, idDoctorParameter, condicionParameter, horaParameter, diaParameter);
         }
