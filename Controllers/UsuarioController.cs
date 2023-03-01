@@ -31,22 +31,23 @@ namespace G7.Controllers
         [HttpGet]
         public ActionResult RegistrarUsuarios()
         {
-            var respuestaTiposUsuario = instanciaUsuario.Consultar_Tipos_Usuario();
+            //var respuestaTiposUsuario = instanciaUsuario.Consultar_Tipos_Usuario();
 
 
-            if (respuestaTiposUsuario != null && respuestaTiposUsuario.Codigo == 1)
-            {
-                var tiposUsuario = new List<SelectListItem>();
+            //if (respuestaTiposUsuario != null && respuestaTiposUsuario.Codigo == 1)
+            //{
+            //    var tiposUsuario = new List<SelectListItem>();
 
-                foreach (var item in respuestaTiposUsuario.lista)
-                    tiposUsuario.Add(new SelectListItem() { Text = item.Descripcion, Value = item.TipoUsuario.ToString() });
+            //    foreach (var item in respuestaTiposUsuario.lista)
+            //        tiposUsuario.Add(new SelectListItem() { Text = item.Descripcion, Value = item.TipoUsuario.ToString() });
 
 
-                ViewBag.comboTiposUsuario = tiposUsuario;
-                return View();
-            }
-            else
-                return View("Error");
+            //    ViewBag.comboTiposUsuario = tiposUsuario;
+            //    return View();
+            //}
+            //else
+            //    return View("Error");
+            return View();
         }
 
 
@@ -55,7 +56,7 @@ namespace G7.Controllers
         {
             var resultado = instanciaUsuario.RegistrarUsuarios(obj);
 
-            if (resultado != null && resultado.Codigo == 3)
+            if (resultado != null && resultado.Codigo == 1)
                 return RedirectToAction("MostrarUsuarios", "Usuario");
             else
                 return View("Error");
@@ -91,7 +92,7 @@ namespace G7.Controllers
         {
             var resultado = instanciaUsuario.EditarUsuarios(obj);
 
-            if (resultado != null && resultado.Codigo == 3)
+            if (resultado != null && resultado.Codigo == 1)
                 return RedirectToAction("MostrarUsuarios", "Usuario");
             else
                 return View("Error");

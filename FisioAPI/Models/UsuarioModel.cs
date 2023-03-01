@@ -140,6 +140,7 @@ namespace FisioAPI.Models
                     {
                         datos.Add(new UsuarioObj
                         {
+                            IdUsuario = item.IdUsuario,
                             Nombre = item.Nombre,
                             Apellido1 = item.primerApellido,
                             Apellido2 = item.segundoApellido,

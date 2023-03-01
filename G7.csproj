@@ -2083,6 +2083,8 @@
     <Content Include="Views\Usuario\VerUsuario.cshtml" />
     <Content Include="Views\Usuario\MostrarUsuarios.cshtml" />
     <Content Include="Views\Home\Principal.cshtml" />
+    <Content Include="Views\Usuario\RegistrarUsuarios.cshtml" />
+    <Content Include="Views\Usuario\EditarUsuarios.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
