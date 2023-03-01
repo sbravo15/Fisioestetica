@@ -169,6 +169,7 @@
     <Compile Include="Models\DoctorObj.cs" />
     <Compile Include="Models\ExpedientesObj.cs" />
     <Compile Include="Models\Filtro.cs" />
+    <Compile Include="Models\PlanillaModel.cs" />
     <Compile Include="Models\PlanillaObj.cs" />
     <Compile Include="Models\TipoUsuarioObj.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
