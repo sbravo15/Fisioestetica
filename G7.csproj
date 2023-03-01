@@ -167,6 +167,7 @@
     </Compile>
     <Compile Include="Models\CitasObj.cs" />
     <Compile Include="Models\DoctorObj.cs" />
+    <Compile Include="Models\ExpedientesModel.cs" />
     <Compile Include="Models\ExpedientesObj.cs" />
     <Compile Include="Models\Filtro.cs" />
     <Compile Include="Models\PlanillaModel.cs" />
