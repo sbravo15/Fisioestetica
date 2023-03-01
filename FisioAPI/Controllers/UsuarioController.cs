@@ -55,7 +55,7 @@ namespace FisioAPI.Controllers
         }
 
         //Edita usuarios
-        [Authorize]
+        //[Authorize]
         [HttpPut]
         [Route("api/Usuario/Editar_Usuario")]
         public RespuestaUsuarioObj Editar_Usuario(UsuarioObj usuario)
@@ -77,7 +77,7 @@ namespace FisioAPI.Controllers
 
 
         //consulta los usuarios en determinado estado
-        [Authorize]
+        //[Authorize]
         [HttpGet]
         [Route("api/Usuario/Consultar_Usuarios_Estado")]
         public RespuestaUsuarioObj Consultar_Usuarios_Estado(int indicador)
@@ -99,7 +99,7 @@ namespace FisioAPI.Controllers
         }
 
         //Consulta usario por numero de ID
-        [Authorize]
+        //[Authorize]
         [HttpGet]
         [Route("api/Usuario/Consultar_Usuario_Id")]
         public RespuestaUsuarioObj Consultar_Usuario_Id(int id)
