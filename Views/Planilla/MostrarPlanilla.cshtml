@@ -1,0 +1,74 @@
+﻿@model IEnumerable<G7.Models.PlanillaObj>
+
+@{
+    ViewBag.Title = "MostrarPlanilla";
+}
+
+<h2>MostrarPlanilla</h2>
+
+<p>
+    @Html.ActionLink("Registrar Planilla", "RegistrarPlanilla", "Planilla", null, new { @class = "btn btn-dark" })
+</p>
+<br>
+<br>
+<table class="table">
+    <tr>
+        <th>
+            IdPlanilla
+        </th>
+        <th>
+            IdDoctor
+        </th>
+        <th>
+            Horas Trabajadas
+        </th>
+        <th>
+            Salario Bruto
+        </th>
+        <th>
+            Seguro
+        </th>
+        <th>
+            Deducciones
+        </th>
+        <th>
+            Salario Neto
+        </th>
+        <th>
+            Acciones
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPlanilla)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdDoctor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HorasTrabajadas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalarioBruto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seguro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Deducciones)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalarioNeto)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "EditarPlanilla", "Planilla", new { id = item.IdPlanilla }, new { @class = "btn btn-secondary" })
+            </td>
+        </tr>
+    }
+
+</table>
