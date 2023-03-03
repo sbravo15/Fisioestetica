@@ -2085,6 +2085,9 @@
     <Content Include="Views\Home\Principal.cshtml" />
     <Content Include="Views\Usuario\RegistrarUsuarios.cshtml" />
     <Content Include="Views\Usuario\EditarUsuarios.cshtml" />
+    <Content Include="Views\Planilla\EditarPlanilla.cshtml" />
+    <Content Include="Views\Planilla\MostrarPlanilla.cshtml" />
+    <Content Include="Views\Planilla\RegistrarPlanilla.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
