@@ -300,3 +300,7 @@ C:\Users\Santiago\Documents\GitHub\Fisioestetica\obj\Debug\G7.csproj.CoreCompile
 C:\Users\Santiago\Documents\GitHub\Fisioestetica\obj\Debug\G7.csproj.CopyComplete
 C:\Users\Santiago\Documents\GitHub\Fisioestetica\obj\Debug\G7.dll
 C:\Users\Santiago\Documents\GitHub\Fisioestetica\obj\Debug\G7.pdb
+C:\Users\jorsh\Documents\GitHub\Fisioestetica\obj\Debug\G7.csproj.AssemblyReference.cache
+C:\Users\jorsh\Documents\GitHub\Fisioestetica\obj\Debug\G7.csproj.CoreCompileInputs.cache
+C:\Users\jorsh\Documents\GitHub\Fisioestetica\obj\Debug\G7.dll
+C:\Users\jorsh\Documents\GitHub\Fisioestetica\obj\Debug\G7.pdb
