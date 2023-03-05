@@ -73,7 +73,6 @@ namespace G7.Models
 
         }
 
-       
+
     }
-}
 }

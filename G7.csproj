@@ -167,6 +167,7 @@
     </Compile>
     <Compile Include="Models\CitasObj.cs" />
     <Compile Include="Models\DoctorObj.cs" />
+    <Compile Include="Models\ExpedientesModel.cs" />
     <Compile Include="Models\ExpedientesObj.cs" />
     <Compile Include="Models\Filtro.cs" />
     <Compile Include="Models\PlanillaModel.cs" />
@@ -2088,6 +2089,7 @@
     <Content Include="Views\Planilla\EditarPlanilla.cshtml" />
     <Content Include="Views\Planilla\MostrarPlanilla.cshtml" />
     <Content Include="Views\Planilla\RegistrarPlanilla.cshtml" />
+    <Content Include="Views\Usuario\PrimerRegistro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
