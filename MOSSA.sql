@@ -42,7 +42,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Dias](
 	[idDia] [int] IDENTITY(1,1) NOT NULL,
-	[descripcion] [varchar](255) NOT NULL,
+	[descripcion] [varchar](30) NOT NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[idDia] ASC
@@ -126,11 +126,11 @@ CREATE TABLE [dbo].[Usuario](
 	[IdUsuario] [int] IDENTITY(1,1) NOT NULL,
 	[Nombre] [varchar](255) NOT NULL,
 	[primerApellido] [varchar](255) NOT NULL,
-	[segundoApellido] [varchar](255) NULL,
+	[segundoApellido] [varchar](255)NOT NULL,
 	[cedula] [varchar](255) NOT NULL,
 	[telefono] [int] NOT NULL,
 	[email] [varchar](255) NOT NULL,
-	[genero][varchar](50),
+	[genero][varchar](50) NOT NULL,
 	[FechaNacimiento] [date] NOT NULL,
 	[Contrasenna] [varchar](100) NOT NULL,
 	[idTipoUsuarioFk] [int] NOT NULL,
@@ -150,7 +150,7 @@ CREATE TABLE [dbo].[Citas](
 	[IdCitas] [int] IDENTITY(1,1) NOT NULL,
 	[IdUsuarioFk] [int] NOT NULL,
 	[IdDoctorFK] [int] NOT NULL,
-	[condicion] [varchar](255) NOT NULL,
+	[condicion] [nvarchar](max) NOT NULL,
 	[Dia][DATE] NOT NULL,
 	[Hora] [datetime] NOT NULL,
 	[status] [bit] NOT NULL,
@@ -169,8 +169,8 @@ CREATE TABLE [dbo].[Expediente](
 	[IdExpediente] [int] IDENTITY(1,1) NOT NULL,
 	[IdUsuarioFk] [int] NOT NULL,
 	[IdDoctorFK] [int] NOT NULL,
-	[Padecimiento] [varchar](2500) NOT NULL,
-	[Tratamiento] [varchar](2500) NOT NULL
+	[Padecimiento] [nvarchar](max) NOT NULL,
+	[Tratamiento] [nvarchar](max) NOT NULL
 PRIMARY KEY CLUSTERED 
 (
 	[IdExpediente] ASC
@@ -189,6 +189,21 @@ CREATE TABLE [dbo].[Comentarios](
 PRIMARY KEY CLUSTERED 
 (
 	[idComentarios] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/*Servicios*/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Servicios](
+	[idServicios] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](255) NOT NULL,
+	[Imagen] [nvarchar](max) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[idServicios] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -661,6 +676,73 @@ END
 GO
 
 
+/*COMENTARIOS*/
+
+--Guardar comentario
+CREATE PROCEDURE [dbo].[Registrar_Comentario]
+
+	@IdUsuario int,
+	@Comentario varchar(3000)
+	
+AS
+BEGIN
+
+	INSERT INTO dbo.Comentarios(idUsuariosFk, textoComentario)
+    VALUES (@IdUsuario, @Comentario)
+
+END
+GO
+--consultar expediente por paciente
+CREATE PROCEDURE [dbo].[Consultar_Comentario_Usuario]
+	@IdPaciente int
+AS
+BEGIN
+
+	SELECT	*
+	FROM	dbo.Comentarios
+	WHERE	idUsuariosFk = @IdPaciente
+
+END
+GO
+
+
+/*Servicios*/
+
+--Guardar Servicios
+CREATE PROCEDURE [dbo].[Registrar_Servicio]
+
+	@Nombre varchar(300),
+	@Imagen varchar(3000)
+	
+AS
+BEGIN
+
+	INSERT INTO dbo.Servicios(Nombre, Imagen)
+    VALUES (@Nombre, @Imagen)
+
+END
+GO
+
+--Editar datos de servicios 
+CREATE PROCEDURE [dbo].[Editar_Servicio]
+	@IdServicio int,
+	@Nombre varchar(300),
+	@Imagen varchar(3000)
+	
+AS
+BEGIN
+
+	UPDATE Servicios
+	SET
+	Nombre = @Nombre,
+	Imagen = @Imagen
+
+	WHERE idServicios = @IdServicio
+	END
+GO
+
+
+
 /*Inserts*/
 
 INSERT INTO dbo.Dias(descripcion)
@@ -692,3 +774,18 @@ INSERT INTO dbo.TipoUsuario(descripcion)
 VALUES ('Admin');
 GO
 
+INSERT INTO dbo.Servicios(Nombre, Imagen)
+VALUES ('Hyaluron Pen ácido hialúronico', 'https://scontent.fsjo7-1.fna.fbcdn.net/v/t39.30808-6/289731076_450067247118780_8368985277295065696_n.jpg?stp=dst-jpg_s720x720&_nc_cat=101&ccb=1-7&_nc_sid=730e14&_nc_ohc=4vJ9cyXKXMcAX_RaW9O&_nc_ht=scontent.fsjo7-1.fna&oh=00_AfBmrtyQewEKgVh8paZgsmC-UVUqWSwsNnVyXl_P2aFfuw&oe=640EEDE0');
+GO
+INSERT INTO dbo.Servicios(Nombre, Imagen)
+VALUES ('Cuidado de Pies', 'https://scontent.fsjo7-1.fna.fbcdn.net/v/t39.30808-6/285377596_434535542005284_6227789948159842479_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=q1QPNZABZHYAX_nquqI&_nc_ht=scontent.fsjo7-1.fna&oh=00_AfDG5KslMFo3h-rbU_W4QlNT6s0mY02MuFAiaYzbBap4Og&oe=640EC246');
+GO
+INSERT INTO dbo.Servicios(Nombre, Imagen)
+VALUES ('Tratamientos Y Masajes', 'https://scontent.fsjo7-1.fna.fbcdn.net/v/t39.30808-6/284212869_431639995628172_4020688070535328099_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=sFfxiHp_DlEAX-FYfvO&_nc_ht=scontent.fsjo7-1.fna&oh=00_AfCECpJg_hD_WW8bftn0BAf4NzuVm8eldxjVsDjGsPVPRA&oe=640E9367');
+GO
+INSERT INTO dbo.Servicios(Nombre, Imagen)
+VALUES ('Descarga Muscular + Presoterapia', 'https://scontent.fsjo7-1.fna.fbcdn.net/v/t39.30808-6/283423462_428323622626476_29826453509120999_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=jVyYJb-AX6IAX-xF6Df&_nc_ht=scontent.fsjo7-1.fna&oh=00_AfDLy7MJLFd17245aTP-d0QHCORc4hnxC2fWItEm26t7pA&oe=640EB00F');
+GO
+INSERT INTO dbo.Servicios(Nombre, Imagen)
+VALUES ('Metatarsalgia', 'https://scontent.fsjo7-1.fna.fbcdn.net/v/t39.30808-6/278914979_404965841628921_7783062394649760160_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=730e14&_nc_ohc=ASG8GRrf3zEAX-eIpEP&_nc_ht=scontent.fsjo7-1.fna&oh=00_AfBHGkBFBK2pG92EVZJtckE8qD1nPBOZQfD4CSAzVxy_FQ&oe=640EDCA3');
+GO

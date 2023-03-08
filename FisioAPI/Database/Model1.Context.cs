@@ -36,6 +36,7 @@ namespace FisioAPI.Database
         public virtual DbSet<Expediente> Expediente { get; set; }
         public virtual DbSet<Horario> Horario { get; set; }
         public virtual DbSet<Planilla> Planilla { get; set; }
+        public virtual DbSet<Servicios> Servicios { get; set; }
         public virtual DbSet<TipoUsuario> TipoUsuario { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
     
@@ -55,6 +56,15 @@ namespace FisioAPI.Database
                 new ObjectParameter("IdPaciente", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Citas_Paciente_Result>("Consultar_Citas_Paciente", idPacienteParameter);
+        }
+    
+        public virtual ObjectResult<Consultar_Comentario_Usuario_Result> Consultar_Comentario_Usuario(Nullable<int> idPaciente)
+        {
+            var idPacienteParameter = idPaciente.HasValue ?
+                new ObjectParameter("IdPaciente", idPaciente) :
+                new ObjectParameter("IdPaciente", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Comentario_Usuario_Result>("Consultar_Comentario_Usuario", idPacienteParameter);
         }
     
         public virtual ObjectResult<Consultar_Datos_Usuario_Result> Consultar_Datos_Usuario(string email, string contrasenna)
@@ -276,6 +286,23 @@ namespace FisioAPI.Database
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Editar_Expediente", idExpedienteParameter, idUsuarioParameter, idDoctorParameter, padecimientoParameter, tratamientoParameter);
         }
     
+        public virtual int Editar_Servicio(Nullable<int> idServicio, string nombre, string imagen)
+        {
+            var idServicioParameter = idServicio.HasValue ?
+                new ObjectParameter("IdServicio", idServicio) :
+                new ObjectParameter("IdServicio", typeof(int));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var imagenParameter = imagen != null ?
+                new ObjectParameter("Imagen", imagen) :
+                new ObjectParameter("Imagen", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Editar_Servicio", idServicioParameter, nombreParameter, imagenParameter);
+        }
+    
         public virtual int Registrar_BitacoraA(string email, Nullable<System.DateTime> fechaHora, string descripcion, string origen)
         {
             var emailParameter = email != null ?
@@ -345,6 +372,19 @@ namespace FisioAPI.Database
                 new ObjectParameter("Dia", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Registrar_Cita", idUsuarioParameter, idDoctorParameter, condicionParameter, horaParameter, diaParameter);
+        }
+    
+        public virtual int Registrar_Comentario(Nullable<int> idUsuario, string comentario)
+        {
+            var idUsuarioParameter = idUsuario.HasValue ?
+                new ObjectParameter("IdUsuario", idUsuario) :
+                new ObjectParameter("IdUsuario", typeof(int));
+    
+            var comentarioParameter = comentario != null ?
+                new ObjectParameter("Comentario", comentario) :
+                new ObjectParameter("Comentario", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Registrar_Comentario", idUsuarioParameter, comentarioParameter);
         }
     
         public virtual int Registrar_Datos_Usuario(string nombre, string apellido1, string apellido2, string cedula, Nullable<int> telefono, string email, string genero, Nullable<System.DateTime> fechaNacimiento, string contrasenna, Nullable<int> tipoUsuario)
@@ -457,6 +497,19 @@ namespace FisioAPI.Database
                 new ObjectParameter("SalNet", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Registrar_Planilla", idDoctorParameter, fechaParameter, horasTParameter, salBrutParameter, seguroParameter, deduccParameter, extraParameter, salNetParameter);
+        }
+    
+        public virtual int Registrar_Servicio(string nombre, string imagen)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var imagenParameter = imagen != null ?
+                new ObjectParameter("Imagen", imagen) :
+                new ObjectParameter("Imagen", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Registrar_Servicio", nombreParameter, imagenParameter);
         }
     }
 }
