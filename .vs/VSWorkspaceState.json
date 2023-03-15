@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
     "",
+    "\\FisioAPI",
+    "\\FisioAPI\\Controllers",
     "\\Models",
     "\\Views",
     "\\Views\\Home",
@@ -8,6 +10,6 @@
     "\\Views\\Shared",
     "\\Views\\Usuario"
   ],
-  "SelectedNode": "\\Views\\Home\\Index.cshtml",
+  "SelectedNode": "\\Models\\UsuarioModel.cs",
   "PreviewInSolutionExplorer": false
 }
