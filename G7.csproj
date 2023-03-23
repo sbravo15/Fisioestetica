@@ -167,10 +167,8 @@
     </Compile>
     <Compile Include="Models\CitasObj.cs" />
     <Compile Include="Models\DoctorObj.cs" />
-    <Compile Include="Models\ExpedientesModel.cs" />
     <Compile Include="Models\ExpedientesObj.cs" />
     <Compile Include="Models\Filtro.cs" />
-    <Compile Include="Models\PlanillaModel.cs" />
     <Compile Include="Models\PlanillaObj.cs" />
     <Compile Include="Models\TipoUsuarioObj.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
@@ -1885,6 +1883,7 @@
     <Content Include="vendor\jquery\jquery.min.js" />
     <Content Include="vendor\jquery\jquery.slim.js" />
     <Content Include="vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Views\Doctor\CrearDoctor.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2090,6 +2089,7 @@
     <Content Include="Views\Planilla\MostrarPlanilla.cshtml" />
     <Content Include="Views\Planilla\RegistrarPlanilla.cshtml" />
     <Content Include="Views\Usuario\PrimerRegistro.cshtml" />
+    <Content Include="Views\Doctor\BuscarDoctor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

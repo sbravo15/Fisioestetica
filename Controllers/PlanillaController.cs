@@ -31,7 +31,6 @@ namespace G7.Controllers
                 if (respuesta.IsSuccessStatusCode)
                 {
                     return RedirectToAction("VerPlanilla", new { id = planilla.IdPlanilla });
-
                 }
                 return View("Error");
             }
@@ -61,40 +60,61 @@ namespace G7.Controllers
         [HttpPost]
         public ActionResult EditarPlanilla(PlanillaObj planilla)
         {
-            using (HttpClient client = new HttpClient())
+            RespuestaPlanillaObj resultado = EditarPlanillaModel(planilla);
+
+            if (resultado != null && resultado.Codigo == 200)
             {
-                string rutaApi = ConfigurationManager.AppSettings["rutaApi"] + "api/Planilla/EditarPlanilla";
-                string token = Session["codigoToken"]?.ToString();
-
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-                JsonContent contenido = JsonContent.Create(planilla);
-
-                HttpResponseMessage respuesta = client.PutAsync(rutaApi, contenido).Result;
-
-                if (respuesta.IsSuccessStatusCode)
-                {
-                    return RedirectToAction("VerPlanilla", new { id = planilla.IdPlanilla });
-                }
-                return View("Error");
+                return RedirectToAction("VerPlanilla", new { id = planilla.IdPlanilla });
             }
+            return View("Error");
         }
 
         //Elimina una planilla existente
         public ActionResult EliminarPlanilla(int id)
         {
+            RespuestaPlanillaObj resultado = EliminarPlanillaModel(id);
+
+            if (resultado != null && resultado.Codigo == 200)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View("Error");
+        }
+
+        private RespuestaPlanillaObj EditarPlanillaModel(PlanillaObj planilla)
+        {
             using (HttpClient client = new HttpClient())
             {
-                string rutaApi = ConfigurationManager.AppSettings["rutaApi"] + "api/Planilla/EliminarPlanilla?id=" + id;
-                string token = Session["codigoToken"]?.ToString();
+                string rutaApi = ConfigurationManager.AppSettings["rutaApi"] + "api/Planilla/EditarPlanilla";
+                string token = HttpContext.Session["codigoToken"].ToString();
+
+                JsonContent contenido = JsonContent.Create(planilla);
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                HttpResponseMessage respuesta = client.PutAsync(rutaApi, contenido).Result;
+
+                if (respuesta.IsSuccessStatusCode)
+                {
+                    return respuesta.Content.ReadAsAsync<RespuestaPlanillaObj>().Result;
+                }
+                return null;
+            }
+        }
+        private RespuestaPlanillaObj EliminarPlanillaModel(int idPlanilla)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                string rutaApi = ConfigurationManager.AppSettings["rutaApi"] + "api/Planilla/EliminarPlanilla?idPlanilla=" + idPlanilla;
+                string token = HttpContext.Session["codigoToken"].ToString();
 
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage respuesta = client.DeleteAsync(rutaApi).Result;
 
                 if (respuesta.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return respuesta.Content.ReadAsAsync<RespuestaPlanillaObj>().Result;
                 }
-                return View("Error");
+                return null;
             }
         }
     }

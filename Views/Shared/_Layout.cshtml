@@ -306,9 +306,9 @@
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Control de Doctores</h6>
-                        <a class="collapse-item" href="tablesDoctor.html">Buscar Doctores</a>
-                        <a class="collapse-item" href="tablesDoctor.html">Ver Doctores</a>
-                        <a class="collapse-item" href="register.html">Agregar Doctor</a>
+                        <a class="collapse-item" href="@Url.Action("BuscarDoctores", "Doctor")">Buscar Doctores</a>
+                        <a class="collapse-item" href="@Url.Action("VerDoctor", "Doctor")"">Ver Doctores</a>
+                        <a class="collapse-item" href="@Url.Action("CrearDoctor", "Doctor")">Agregar Doctor</a>
                     </div>
                 </div>
             </li>
@@ -327,9 +327,9 @@
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Expediente médico</h6>
-                        <a class="collapse-item" href="tableExpediente.html">Buscar Expediente</a>
-                        <a class="collapse-item" href="tableExpediente.html">Modificar Expedientes</a>
-                        <a class="collapse-item" href="generarExpediente.html">Generar nuevo Expediente</a>
+                        <a class="collapse-item" href="@Url.Action("VerExpediente", "Expediente")">Buscar Expediente</a>
+                        <a class="collapse-item" href="@Url.Action("EditarExpediente", "Expediente")">Modificar Expedientes</a>
+                        <a class="collapse-item" href="@Url.Action("CrearExpediente", "Expediente")">Generar nuevo Expediente</a>
                     </div>
                 </div>
             </li>

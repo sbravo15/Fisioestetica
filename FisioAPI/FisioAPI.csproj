@@ -298,7 +298,6 @@
     <Compile Include="Models\BitacoraModel.cs" />
     <Compile Include="Models\CitasObj.cs" />
     <Compile Include="Models\DoctorModel.cs" />
-    <Compile Include="Models\DoctorObj.cs" />
     <Compile Include="Models\ExpedientesObj.cs" />
     <Compile Include="Models\PlanillaModel.cs" />
     <Compile Include="Models\PlanillaObj.cs" />

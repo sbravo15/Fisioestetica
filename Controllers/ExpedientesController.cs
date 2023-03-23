@@ -8,31 +8,29 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using System.Configuration;
 
 namespace G7.Controllers
 {
     public class ExpedientesController : Controller
     {
-        ExpedientesModel instanciaExpedientes = new ExpedientesModel();
-
         [HttpPost]
         public ActionResult CrearExpediente(ExpedientesObj obj)
         {
-                       
-                var resultado = instanciaExpedientes.RegistrarExpedientes(obj);
+            var resultado = RegistrarExpedientes(obj);
 
-                if (resultado != null && resultado.Codigo == 1)
-                    return RedirectToAction("MostrarUsuarios", "Usuario");
-                else
-                    return View("Error");
-            
+            if (resultado != null && resultado.Codigo == 1)
+                return RedirectToAction("MostrarUsuarios", "Usuario");
+            else
+                return View("Error");
+
             return View();
         }
 
         [HttpGet]
         public ActionResult VerExpediente()
         {
-            var respuesta = instanciaExpedientes.Consultar_Expediente_Paciente(1);
+            var respuesta = Consultar_Expediente_Paciente(1);
 
             if (respuesta != null && respuesta.Codigo == 1)
                 return View(respuesta.lista);
@@ -43,7 +41,7 @@ namespace G7.Controllers
         [HttpGet]
         public ActionResult EditarExpediente(int id)
         {
-            var respuestaTiposExpedientes = instanciaExpedientes.Consultar_Expediente_Paciente(1);
+            var respuestaTiposExpedientes = Consultar_Expediente_Paciente(1);
 
             if (respuestaTiposExpedientes != null && respuestaTiposExpedientes.Codigo == 1)
             {
@@ -54,7 +52,7 @@ namespace G7.Controllers
 
                 ViewBag.comboTiposUsuario = tiposUsuario;
 
-                var respuestaExpediente = instanciaExpedientes.Consultar_Expediente_Paciente(id);
+                var respuestaExpediente = Consultar_Expediente_Paciente(id);
 
                 if (respuestaExpediente != null && respuestaExpediente.Codigo == 1)
                     return View(respuestaExpediente.objeto);
@@ -63,7 +61,65 @@ namespace G7.Controllers
             }
             else
                 return View("Error");
-            
+
+        }
+        public RespuestaExpedientesObj EditarExpedientes(ExpedientesObj usuario)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                string rutaApi = ConfigurationManager.AppSettings["rutaApi"] + "api/Expedientes/Editar_Expediente";
+                string token = HttpContext.Session["codigoToken"].ToString();
+
+                JsonContent contenido = JsonContent.Create(usuario);
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                HttpResponseMessage respuesta = client.PutAsync(rutaApi, contenido).Result;
+
+                if (respuesta.IsSuccessStatusCode)
+                {
+                    return respuesta.Content.ReadAsAsync<RespuestaExpedientesObj>().Result;
+                }
+                return null;
+            }
+        }
+
+        public RespuestaExpedientesObj RegistrarExpedientes(ExpedientesObj obj)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                string rutaApi = ConfigurationManager.AppSettings["rutaApi"] + "api/Expedientes/Registrar_Expediente";
+                string token = HttpContext.Session["codigoToken"].ToString();
+
+                JsonContent contenido = JsonContent.Create(obj);
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                HttpResponseMessage respuesta = client.PostAsync(rutaApi, contenido).Result;
+
+                if (respuesta.IsSuccessStatusCode)
+                {
+                    return respuesta.Content.ReadAsAsync<RespuestaExpedientesObj>().Result;
+                }
+                return null;
+            }
+        }
+
+        public RespuestaExpedientesObj Consultar_Expediente_Paciente(int id)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                string rutaApi = ConfigurationManager.AppSettings["rutaApi"] + "api/Expedientes/Consultar_Expediente_Paciente?id=" + id;
+                string token = HttpContext.Session["codigoToken"].ToString();
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                HttpResponseMessage respuesta = client.GetAsync(rutaApi).Result;
+
+                if (respuesta.IsSuccessStatusCode)
+                {
+                    return respuesta.Content.ReadAsAsync<RespuestaExpedientesObj>().Result;
+                }
+                return null;
+            }
         }
     }
 }
+        
