@@ -99,6 +99,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Servicios">
+      <EntityTypeMapping TypeName="MOSSAModel.Servicios">
+        <MappingFragment StoreEntitySet="Servicios">
+          <ScalarProperty Name="idServicios" ColumnName="idServicios" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="TipoUsuario">
       <EntityTypeMapping TypeName="MOSSAModel.TipoUsuario">
         <MappingFragment StoreEntitySet="TipoUsuario">
@@ -146,6 +155,15 @@
           <ScalarProperty Name="Condicion" ColumnName="Condicion" />
           <ScalarProperty Name="Hora" ColumnName="Hora" />
           <ScalarProperty Name="status" ColumnName="status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Consultar_Comentario_Usuario" FunctionName="MOSSAModel.Store.Consultar_Comentario_Usuario">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MOSSAModel.Consultar_Comentario_Usuario_Result">
+          <ScalarProperty Name="idComentarios" ColumnName="idComentarios" />
+          <ScalarProperty Name="idUsuariosFk" ColumnName="idUsuariosFk" />
+          <ScalarProperty Name="textoComentario" ColumnName="textoComentario" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -263,12 +281,15 @@
     <FunctionImportMapping FunctionImportName="Editar_Datos_Planilla" FunctionName="MOSSAModel.Store.Editar_Datos_Planilla" />
     <FunctionImportMapping FunctionImportName="Editar_Datos_Usuario" FunctionName="MOSSAModel.Store.Editar_Datos_Usuario" />
     <FunctionImportMapping FunctionImportName="Editar_Expediente" FunctionName="MOSSAModel.Store.Editar_Expediente" />
+    <FunctionImportMapping FunctionImportName="Editar_Servicio" FunctionName="MOSSAModel.Store.Editar_Servicio" />
     <FunctionImportMapping FunctionImportName="Registrar_BitacoraA" FunctionName="MOSSAModel.Store.Registrar_BitacoraA" />
     <FunctionImportMapping FunctionImportName="Registrar_BitacoraE" FunctionName="MOSSAModel.Store.Registrar_BitacoraE" />
     <FunctionImportMapping FunctionImportName="Registrar_Cita" FunctionName="MOSSAModel.Store.Registrar_Cita" />
+    <FunctionImportMapping FunctionImportName="Registrar_Comentario" FunctionName="MOSSAModel.Store.Registrar_Comentario" />
     <FunctionImportMapping FunctionImportName="Registrar_Datos_Usuario" FunctionName="MOSSAModel.Store.Registrar_Datos_Usuario" />
     <FunctionImportMapping FunctionImportName="Registrar_Doctor" FunctionName="MOSSAModel.Store.Registrar_Doctor" />
     <FunctionImportMapping FunctionImportName="Registrar_Expediente" FunctionName="MOSSAModel.Store.Registrar_Expediente" />
     <FunctionImportMapping FunctionImportName="Registrar_Planilla" FunctionName="MOSSAModel.Store.Registrar_Planilla" />
+    <FunctionImportMapping FunctionImportName="Registrar_Servicio" FunctionName="MOSSAModel.Store.Registrar_Servicio" />
   </EntityContainerMapping>
 </Mapping>

@@ -17,12 +17,12 @@
     <Property Name="IdCitas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IdUsuarioFk" Type="Int32" Nullable="false" />
     <Property Name="IdDoctorFK" Type="Int32" Nullable="false" />
-    <Property Name="condicion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="condicion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Dia" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="Hora" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="status" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Doctores" Relationship="Self.FK__Citas__IdDoctorF__3C69FB99" FromRole="Citas" ToRole="Doctores" />
-    <NavigationProperty Name="Usuario" Relationship="Self.FK__Citas__IdUsuario__3D5E1FD2" FromRole="Citas" ToRole="Usuario" />
+    <NavigationProperty Name="Doctores" Relationship="Self.FK__Citas__IdDoctorF__3E52440B" FromRole="Citas" ToRole="Doctores" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Citas__IdUsuario__3F466844" FromRole="Citas" ToRole="Usuario" />
   </EntityType>
   <EntityType Name="Comentarios">
     <Key>
@@ -31,15 +31,15 @@
     <Property Name="idComentarios" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="idUsuariosFk" Type="Int32" Nullable="false" />
     <Property Name="textoComentario" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Usuario" Relationship="Self.FK__Comentari__idUsu__38996AB5" FromRole="Comentarios" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Comentari__idUsu__3A81B327" FromRole="Comentarios" ToRole="Usuario" />
   </EntityType>
   <EntityType Name="Dias">
     <Key>
       <PropertyRef Name="idDia" />
     </Key>
     <Property Name="idDia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Horario" Relationship="Self.FK__Horario__IdDiaFK__37A5467C" FromRole="Dias" ToRole="Horario" />
+    <Property Name="descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Horario" Relationship="Self.FK__Horario__IdDiaFK__398D8EEE" FromRole="Dias" ToRole="Horario" />
   </EntityType>
   <EntityType Name="Doctores">
     <Key>
@@ -47,11 +47,11 @@
     </Key>
     <Property Name="IdDoctor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IdUsuarioFK" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Citas" Relationship="Self.FK__Citas__IdDoctorF__3C69FB99" FromRole="Doctores" ToRole="Citas" />
-    <NavigationProperty Name="Usuario" Relationship="Self.FK__Doctores__IdUsua__398D8EEE" FromRole="Doctores" ToRole="Usuario" />
-    <NavigationProperty Name="Expediente" Relationship="Self.FK__Expedient__IdDoc__3E52440B" FromRole="Doctores" ToRole="Expediente" />
-    <NavigationProperty Name="Horario" Relationship="Self.FK__Horario__IdDocto__403A8C7D" FromRole="Doctores" ToRole="Horario" />
-    <NavigationProperty Name="Planilla" Relationship="Self.FK__Planilla__IdDoct__3A81B327" FromRole="Doctores" ToRole="Planilla" />
+    <NavigationProperty Name="Citas" Relationship="Self.FK__Citas__IdDoctorF__3E52440B" FromRole="Doctores" ToRole="Citas" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Doctores__IdUsua__3B75D760" FromRole="Doctores" ToRole="Usuario" />
+    <NavigationProperty Name="Expediente" Relationship="Self.FK__Expedient__IdDoc__403A8C7D" FromRole="Doctores" ToRole="Expediente" />
+    <NavigationProperty Name="Horario" Relationship="Self.FK__Horario__IdDocto__4222D4EF" FromRole="Doctores" ToRole="Horario" />
+    <NavigationProperty Name="Planilla" Relationship="Self.FK__Planilla__IdDoct__3C69FB99" FromRole="Doctores" ToRole="Planilla" />
   </EntityType>
   <EntityType Name="EBITACORA">
     <Key>
@@ -71,10 +71,10 @@
     <Property Name="IdExpediente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IdUsuarioFk" Type="Int32" Nullable="false" />
     <Property Name="IdDoctorFK" Type="Int32" Nullable="false" />
-    <Property Name="Padecimiento" Type="String" MaxLength="2500" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Tratamiento" Type="String" MaxLength="2500" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Doctores" Relationship="Self.FK__Expedient__IdDoc__3E52440B" FromRole="Expediente" ToRole="Doctores" />
-    <NavigationProperty Name="Usuario" Relationship="Self.FK__Expedient__IdUsu__3F466844" FromRole="Expediente" ToRole="Usuario" />
+    <Property Name="Padecimiento" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Tratamiento" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Doctores" Relationship="Self.FK__Expedient__IdDoc__403A8C7D" FromRole="Expediente" ToRole="Doctores" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Expedient__IdUsu__412EB0B6" FromRole="Expediente" ToRole="Usuario" />
   </EntityType>
   <EntityType Name="Horario">
     <Key>
@@ -85,8 +85,8 @@
     <Property Name="IdDoctorFK" Type="Int32" Nullable="false" />
     <Property Name="HoraEntrada" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="HoraSalida" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Dias" Relationship="Self.FK__Horario__IdDiaFK__37A5467C" FromRole="Horario" ToRole="Dias" />
-    <NavigationProperty Name="Doctores" Relationship="Self.FK__Horario__IdDocto__403A8C7D" FromRole="Horario" ToRole="Doctores" />
+    <NavigationProperty Name="Dias" Relationship="Self.FK__Horario__IdDiaFK__398D8EEE" FromRole="Horario" ToRole="Dias" />
+    <NavigationProperty Name="Doctores" Relationship="Self.FK__Horario__IdDocto__4222D4EF" FromRole="Horario" ToRole="Doctores" />
   </EntityType>
   <EntityType Name="Planilla">
     <Key>
@@ -101,7 +101,15 @@
     <Property Name="deducciones" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="pagosExtra" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="salarioNeto" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-    <NavigationProperty Name="Doctores" Relationship="Self.FK__Planilla__IdDoct__3A81B327" FromRole="Planilla" ToRole="Doctores" />
+    <NavigationProperty Name="Doctores" Relationship="Self.FK__Planilla__IdDoct__3C69FB99" FromRole="Planilla" ToRole="Doctores" />
+  </EntityType>
+  <EntityType Name="Servicios">
+    <Key>
+      <PropertyRef Name="idServicios" />
+    </Key>
+    <Property Name="idServicios" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
   </EntityType>
   <EntityType Name="TipoUsuario">
     <Key>
@@ -109,7 +117,7 @@
     </Key>
     <Property Name="idTipoUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario__idTipoU__3B75D760" FromRole="TipoUsuario" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario__idTipoU__3D5E1FD2" FromRole="TipoUsuario" ToRole="Usuario" />
   </EntityType>
   <EntityType Name="Usuario">
     <Key>
@@ -118,22 +126,22 @@
     <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="primerApellido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="segundoApellido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="segundoApellido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="cedula" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="telefono" Type="Int32" Nullable="false" />
     <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="genero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="genero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="Contrasenna" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="idTipoUsuarioFk" Type="Int32" Nullable="false" />
     <Property Name="state" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Citas" Relationship="Self.FK__Citas__IdUsuario__3D5E1FD2" FromRole="Usuario" ToRole="Citas" />
-    <NavigationProperty Name="Comentarios" Relationship="Self.FK__Comentari__idUsu__38996AB5" FromRole="Usuario" ToRole="Comentarios" />
-    <NavigationProperty Name="Doctores" Relationship="Self.FK__Doctores__IdUsua__398D8EEE" FromRole="Usuario" ToRole="Doctores" />
-    <NavigationProperty Name="Expediente" Relationship="Self.FK__Expedient__IdUsu__3F466844" FromRole="Usuario" ToRole="Expediente" />
-    <NavigationProperty Name="TipoUsuario" Relationship="Self.FK__Usuario__idTipoU__3B75D760" FromRole="Usuario" ToRole="TipoUsuario" />
+    <NavigationProperty Name="Citas" Relationship="Self.FK__Citas__IdUsuario__3F466844" FromRole="Usuario" ToRole="Citas" />
+    <NavigationProperty Name="Comentarios" Relationship="Self.FK__Comentari__idUsu__3A81B327" FromRole="Usuario" ToRole="Comentarios" />
+    <NavigationProperty Name="Doctores" Relationship="Self.FK__Doctores__IdUsua__3B75D760" FromRole="Usuario" ToRole="Doctores" />
+    <NavigationProperty Name="Expediente" Relationship="Self.FK__Expedient__IdUsu__412EB0B6" FromRole="Usuario" ToRole="Expediente" />
+    <NavigationProperty Name="TipoUsuario" Relationship="Self.FK__Usuario__idTipoU__3D5E1FD2" FromRole="Usuario" ToRole="TipoUsuario" />
   </EntityType>
-  <Association Name="FK__Citas__IdDoctorF__3C69FB99">
+  <Association Name="FK__Citas__IdDoctorF__3E52440B">
     <End Role="Doctores" Type="Self.Doctores" Multiplicity="1" />
     <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
     <ReferentialConstraint>
@@ -145,7 +153,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Citas__IdUsuario__3D5E1FD2">
+  <Association Name="FK__Citas__IdUsuario__3F466844">
     <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
     <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
     <ReferentialConstraint>
@@ -157,7 +165,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Comentari__idUsu__38996AB5">
+  <Association Name="FK__Comentari__idUsu__3A81B327">
     <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
     <End Role="Comentarios" Type="Self.Comentarios" Multiplicity="*" />
     <ReferentialConstraint>
@@ -169,7 +177,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Horario__IdDiaFK__37A5467C">
+  <Association Name="FK__Horario__IdDiaFK__398D8EEE">
     <End Role="Dias" Type="Self.Dias" Multiplicity="1" />
     <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
     <ReferentialConstraint>
@@ -181,7 +189,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Doctores__IdUsua__398D8EEE">
+  <Association Name="FK__Doctores__IdUsua__3B75D760">
     <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
     <End Role="Doctores" Type="Self.Doctores" Multiplicity="*" />
     <ReferentialConstraint>
@@ -193,7 +201,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Expedient__IdDoc__3E52440B">
+  <Association Name="FK__Expedient__IdDoc__403A8C7D">
     <End Role="Doctores" Type="Self.Doctores" Multiplicity="1" />
     <End Role="Expediente" Type="Self.Expediente" Multiplicity="*" />
     <ReferentialConstraint>
@@ -205,7 +213,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Horario__IdDocto__403A8C7D">
+  <Association Name="FK__Horario__IdDocto__4222D4EF">
     <End Role="Doctores" Type="Self.Doctores" Multiplicity="1" />
     <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
     <ReferentialConstraint>
@@ -217,7 +225,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Planilla__IdDoct__3A81B327">
+  <Association Name="FK__Planilla__IdDoct__3C69FB99">
     <End Role="Doctores" Type="Self.Doctores" Multiplicity="1" />
     <End Role="Planilla" Type="Self.Planilla" Multiplicity="*" />
     <ReferentialConstraint>
@@ -229,7 +237,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Expedient__IdUsu__3F466844">
+  <Association Name="FK__Expedient__IdUsu__412EB0B6">
     <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
     <End Role="Expediente" Type="Self.Expediente" Multiplicity="*" />
     <ReferentialConstraint>
@@ -241,7 +249,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Usuario__idTipoU__3B75D760">
+  <Association Name="FK__Usuario__idTipoU__3D5E1FD2">
     <End Role="TipoUsuario" Type="Self.TipoUsuario" Multiplicity="1" />
     <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
     <ReferentialConstraint>
@@ -263,45 +271,46 @@
     <EntitySet Name="Expediente" EntityType="Self.Expediente" />
     <EntitySet Name="Horario" EntityType="Self.Horario" />
     <EntitySet Name="Planilla" EntityType="Self.Planilla" />
+    <EntitySet Name="Servicios" EntityType="Self.Servicios" />
     <EntitySet Name="TipoUsuario" EntityType="Self.TipoUsuario" />
     <EntitySet Name="Usuario" EntityType="Self.Usuario" />
-    <AssociationSet Name="FK__Citas__IdDoctorF__3C69FB99" Association="Self.FK__Citas__IdDoctorF__3C69FB99">
+    <AssociationSet Name="FK__Citas__IdDoctorF__3E52440B" Association="Self.FK__Citas__IdDoctorF__3E52440B">
       <End Role="Doctores" EntitySet="Doctores" />
       <End Role="Citas" EntitySet="Citas" />
     </AssociationSet>
-    <AssociationSet Name="FK__Citas__IdUsuario__3D5E1FD2" Association="Self.FK__Citas__IdUsuario__3D5E1FD2">
+    <AssociationSet Name="FK__Citas__IdUsuario__3F466844" Association="Self.FK__Citas__IdUsuario__3F466844">
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="Citas" EntitySet="Citas" />
     </AssociationSet>
-    <AssociationSet Name="FK__Comentari__idUsu__38996AB5" Association="Self.FK__Comentari__idUsu__38996AB5">
+    <AssociationSet Name="FK__Comentari__idUsu__3A81B327" Association="Self.FK__Comentari__idUsu__3A81B327">
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="Comentarios" EntitySet="Comentarios" />
     </AssociationSet>
-    <AssociationSet Name="FK__Horario__IdDiaFK__37A5467C" Association="Self.FK__Horario__IdDiaFK__37A5467C">
+    <AssociationSet Name="FK__Horario__IdDiaFK__398D8EEE" Association="Self.FK__Horario__IdDiaFK__398D8EEE">
       <End Role="Dias" EntitySet="Dias" />
       <End Role="Horario" EntitySet="Horario" />
     </AssociationSet>
-    <AssociationSet Name="FK__Doctores__IdUsua__398D8EEE" Association="Self.FK__Doctores__IdUsua__398D8EEE">
+    <AssociationSet Name="FK__Doctores__IdUsua__3B75D760" Association="Self.FK__Doctores__IdUsua__3B75D760">
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="Doctores" EntitySet="Doctores" />
     </AssociationSet>
-    <AssociationSet Name="FK__Expedient__IdDoc__3E52440B" Association="Self.FK__Expedient__IdDoc__3E52440B">
+    <AssociationSet Name="FK__Expedient__IdDoc__403A8C7D" Association="Self.FK__Expedient__IdDoc__403A8C7D">
       <End Role="Doctores" EntitySet="Doctores" />
       <End Role="Expediente" EntitySet="Expediente" />
     </AssociationSet>
-    <AssociationSet Name="FK__Horario__IdDocto__403A8C7D" Association="Self.FK__Horario__IdDocto__403A8C7D">
+    <AssociationSet Name="FK__Horario__IdDocto__4222D4EF" Association="Self.FK__Horario__IdDocto__4222D4EF">
       <End Role="Doctores" EntitySet="Doctores" />
       <End Role="Horario" EntitySet="Horario" />
     </AssociationSet>
-    <AssociationSet Name="FK__Planilla__IdDoct__3A81B327" Association="Self.FK__Planilla__IdDoct__3A81B327">
+    <AssociationSet Name="FK__Planilla__IdDoct__3C69FB99" Association="Self.FK__Planilla__IdDoct__3C69FB99">
       <End Role="Doctores" EntitySet="Doctores" />
       <End Role="Planilla" EntitySet="Planilla" />
     </AssociationSet>
-    <AssociationSet Name="FK__Expedient__IdUsu__3F466844" Association="Self.FK__Expedient__IdUsu__3F466844">
+    <AssociationSet Name="FK__Expedient__IdUsu__412EB0B6" Association="Self.FK__Expedient__IdUsu__412EB0B6">
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="Expediente" EntitySet="Expediente" />
     </AssociationSet>
-    <AssociationSet Name="FK__Usuario__idTipoU__3B75D760" Association="Self.FK__Usuario__idTipoU__3B75D760">
+    <AssociationSet Name="FK__Usuario__idTipoU__3D5E1FD2" Association="Self.FK__Usuario__idTipoU__3D5E1FD2">
       <End Role="TipoUsuario" EntitySet="TipoUsuario" />
       <End Role="Usuario" EntitySet="Usuario" />
     </AssociationSet>
@@ -309,6 +318,9 @@
       <Parameter Name="IdDoctor" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="Consultar_Citas_Paciente" ReturnType="Collection(MOSSAModel.Consultar_Citas_Paciente_Result)">
+      <Parameter Name="IdPaciente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Consultar_Comentario_Usuario" ReturnType="Collection(MOSSAModel.Consultar_Comentario_Usuario_Result)">
       <Parameter Name="IdPaciente" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="Consultar_Datos_Usuario" ReturnType="Collection(MOSSAModel.Consultar_Datos_Usuario_Result)">
@@ -374,6 +386,11 @@
       <Parameter Name="Padecimiento" Mode="In" Type="String" />
       <Parameter Name="Tratamiento" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="Editar_Servicio">
+      <Parameter Name="IdServicio" Mode="In" Type="Int32" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Imagen" Mode="In" Type="String" />
+    </FunctionImport>
     <FunctionImport Name="Registrar_BitacoraA">
       <Parameter Name="Email" Mode="In" Type="String" />
       <Parameter Name="FechaHora" Mode="In" Type="DateTime" />
@@ -393,6 +410,10 @@
       <Parameter Name="Condicion" Mode="In" Type="String" />
       <Parameter Name="Hora" Mode="In" Type="DateTime" />
       <Parameter Name="Dia" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Registrar_Comentario">
+      <Parameter Name="IdUsuario" Mode="In" Type="Int32" />
+      <Parameter Name="Comentario" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="Registrar_Datos_Usuario">
       <Parameter Name="Nombre" Mode="In" Type="String" />
@@ -425,12 +446,16 @@
       <Parameter Name="Extra" Mode="In" Type="Decimal" />
       <Parameter Name="SalNet" Mode="In" Type="Decimal" />
     </FunctionImport>
+    <FunctionImport Name="Registrar_Servicio">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Imagen" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="Consultar_Citas_Doctor_Result">
     <Property Type="Int32" Name="IdCitas" Nullable="false" />
     <Property Type="Int32" Name="IdUsuarioFK" Nullable="false" />
     <Property Type="Int32" Name="IdDoctorFK" Nullable="false" />
-    <Property Type="String" Name="Condicion" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="Condicion" Nullable="false" />
     <Property Type="DateTime" Name="Hora" Nullable="false" Precision="23" />
     <Property Type="Boolean" Name="status" Nullable="false" />
   </ComplexType>
@@ -438,19 +463,24 @@
     <Property Type="Int32" Name="IdCitas" Nullable="false" />
     <Property Type="Int32" Name="IdUsuarioFK" Nullable="false" />
     <Property Type="Int32" Name="IdDoctorFK" Nullable="false" />
-    <Property Type="String" Name="Condicion" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="Condicion" Nullable="false" />
     <Property Type="DateTime" Name="Hora" Nullable="false" Precision="23" />
     <Property Type="Boolean" Name="status" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Consultar_Comentario_Usuario_Result">
+    <Property Type="Int32" Name="idComentarios" Nullable="false" />
+    <Property Type="Int32" Name="idUsuariosFk" Nullable="false" />
+    <Property Type="String" Name="textoComentario" Nullable="false" MaxLength="255" />
   </ComplexType>
   <ComplexType Name="Consultar_Datos_Usuario_Result">
     <Property Type="Int32" Name="IdUsuario" Nullable="false" />
     <Property Type="String" Name="Nombre" Nullable="false" MaxLength="255" />
     <Property Type="String" Name="primerApellido" Nullable="false" MaxLength="255" />
-    <Property Type="String" Name="segundoApellido" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="segundoApellido" Nullable="false" MaxLength="255" />
     <Property Type="String" Name="cedula" Nullable="false" MaxLength="255" />
     <Property Type="Int32" Name="telefono" Nullable="false" />
     <Property Type="String" Name="Email" Nullable="false" MaxLength="255" />
-    <Property Type="String" Name="genero" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="genero" Nullable="false" MaxLength="50" />
     <Property Type="DateTime" Name="FechaNacimiento" Nullable="false" />
     <Property Type="String" Name="Contrasenna" Nullable="false" MaxLength="100" />
     <Property Type="Int32" Name="idTipoUsuarioFk" Nullable="false" />
@@ -461,11 +491,11 @@
     <Property Type="Int32" Name="IdDoctor" Nullable="false" />
     <Property Type="String" Name="Nombre" Nullable="false" MaxLength="255" />
     <Property Type="String" Name="primerApellido" Nullable="false" MaxLength="255" />
-    <Property Type="String" Name="segundoApellido" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="segundoApellido" Nullable="false" MaxLength="255" />
     <Property Type="String" Name="cedula" Nullable="false" MaxLength="255" />
     <Property Type="Int32" Name="telefono" Nullable="false" />
     <Property Type="String" Name="Email" Nullable="false" MaxLength="255" />
-    <Property Type="String" Name="genero" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="genero" Nullable="false" MaxLength="50" />
     <Property Type="DateTime" Name="FechaNacimiento" Nullable="false" />
     <Property Type="Boolean" Name="state" Nullable="false" />
   </ComplexType>
@@ -473,19 +503,19 @@
     <Property Type="Int32" Name="IdExpediente" Nullable="false" />
     <Property Type="Int32" Name="IdUsuarioFk" Nullable="false" />
     <Property Type="Int32" Name="IdDoctorFK" Nullable="false" />
-    <Property Type="String" Name="Padecimiento" Nullable="false" MaxLength="2500" />
-    <Property Type="String" Name="Tratamiento" Nullable="false" MaxLength="2500" />
+    <Property Type="String" Name="Padecimiento" Nullable="false" />
+    <Property Type="String" Name="Tratamiento" Nullable="false" />
   </ComplexType>
   <ComplexType Name="Consultar_IdDoctor_Result">
     <Property Type="Int32" Name="IdUsuario" Nullable="false" />
     <Property Type="Int32" Name="IdDoctor" Nullable="false" />
     <Property Type="String" Name="Nombre" Nullable="false" MaxLength="255" />
     <Property Type="String" Name="primerApellido" Nullable="false" MaxLength="255" />
-    <Property Type="String" Name="segundoApellido" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="segundoApellido" Nullable="false" MaxLength="255" />
     <Property Type="String" Name="cedula" Nullable="false" MaxLength="255" />
     <Property Type="Int32" Name="telefono" Nullable="false" />
     <Property Type="String" Name="Email" Nullable="false" MaxLength="255" />
-    <Property Type="String" Name="genero" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="genero" Nullable="false" MaxLength="50" />
     <Property Type="DateTime" Name="FechaNacimiento" Nullable="false" />
     <Property Type="Boolean" Name="state" Nullable="false" />
   </ComplexType>
@@ -515,11 +545,11 @@
     <Property Type="Int32" Name="IdUsuario" Nullable="false" />
     <Property Type="String" Name="Nombre" Nullable="false" MaxLength="255" />
     <Property Type="String" Name="primerApellido" Nullable="false" MaxLength="255" />
-    <Property Type="String" Name="segundoApellido" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="segundoApellido" Nullable="false" MaxLength="255" />
     <Property Type="String" Name="cedula" Nullable="false" MaxLength="255" />
     <Property Type="Int32" Name="telefono" Nullable="false" />
     <Property Type="String" Name="Email" Nullable="false" MaxLength="255" />
-    <Property Type="String" Name="genero" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="genero" Nullable="false" MaxLength="50" />
     <Property Type="DateTime" Name="FechaNacimiento" Nullable="false" />
     <Property Type="Int32" Name="idTipoUsuarioFk" Nullable="false" />
     <Property Type="Boolean" Name="state" Nullable="false" />

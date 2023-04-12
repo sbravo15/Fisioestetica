@@ -125,3 +125,7 @@ C:\Users\Usuario\source\repos\Fisioestetica\FisioAPI\bin\es\System.Web.WebPages.
 C:\Users\Usuario\source\repos\Fisioestetica\FisioAPI\obj\Debug\FisioAPI.csproj.CopyComplete
 C:\Users\Usuario\source\repos\Fisioestetica\FisioAPI\obj\Debug\FisioAPI.dll
 C:\Users\Usuario\source\repos\Fisioestetica\FisioAPI\obj\Debug\FisioAPI.pdb
+C:\Users\abriz\Documents\GitHub\Fisioestetica\FisioAPI\obj\Debug\FisioAPI.csproj.AssemblyReference.cache
+C:\Users\abriz\Documents\GitHub\Fisioestetica\FisioAPI\obj\Debug\FisioAPI.csproj.CoreCompileInputs.cache
+C:\Users\abriz\Documents\GitHub\Fisioestetica\FisioAPI\obj\Debug\FisioAPI.dll
+C:\Users\abriz\Documents\GitHub\Fisioestetica\FisioAPI\obj\Debug\FisioAPI.pdb

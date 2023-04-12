@@ -17,7 +17,7 @@
     <Property Name="IdCitas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IdUsuarioFk" Type="int" Nullable="false" />
     <Property Name="IdDoctorFK" Type="int" Nullable="false" />
-    <Property Name="condicion" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="condicion" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Dia" Type="date" Nullable="false" />
     <Property Name="Hora" Type="datetime" Nullable="false" />
     <Property Name="status" Type="bit" Nullable="false" />
@@ -35,7 +35,7 @@
       <PropertyRef Name="idDia" />
     </Key>
     <Property Name="idDia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="descripcion" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="30" Nullable="false" />
   </EntityType>
   <EntityType Name="Doctores">
     <Key>
@@ -62,8 +62,8 @@
     <Property Name="IdExpediente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IdUsuarioFk" Type="int" Nullable="false" />
     <Property Name="IdDoctorFK" Type="int" Nullable="false" />
-    <Property Name="Padecimiento" Type="varchar" MaxLength="2500" Nullable="false" />
-    <Property Name="Tratamiento" Type="varchar" MaxLength="2500" Nullable="false" />
+    <Property Name="Padecimiento" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Tratamiento" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Horario">
     <Key>
@@ -89,6 +89,14 @@
     <Property Name="pagosExtra" Type="decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="salarioNeto" Type="decimal" Precision="18" Scale="0" Nullable="false" />
   </EntityType>
+  <EntityType Name="Servicios">
+    <Key>
+      <PropertyRef Name="idServicios" />
+    </Key>
+    <Property Name="idServicios" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Imagen" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
   <EntityType Name="TipoUsuario">
     <Key>
       <PropertyRef Name="idTipoUsuario" />
@@ -103,17 +111,17 @@
     <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nombre" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="primerApellido" Type="varchar" MaxLength="255" Nullable="false" />
-    <Property Name="segundoApellido" Type="varchar" MaxLength="255" />
+    <Property Name="segundoApellido" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="cedula" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="telefono" Type="int" Nullable="false" />
     <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
-    <Property Name="genero" Type="varchar" MaxLength="50" />
+    <Property Name="genero" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="FechaNacimiento" Type="date" Nullable="false" />
     <Property Name="Contrasenna" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="idTipoUsuarioFk" Type="int" Nullable="false" />
     <Property Name="state" Type="bit" Nullable="false" />
   </EntityType>
-  <Association Name="FK__Citas__IdDoctorF__3C69FB99">
+  <Association Name="FK__Citas__IdDoctorF__3E52440B">
     <End Role="Doctores" Type="Self.Doctores" Multiplicity="1" />
     <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
     <ReferentialConstraint>
@@ -125,7 +133,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Citas__IdUsuario__3D5E1FD2">
+  <Association Name="FK__Citas__IdUsuario__3F466844">
     <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
     <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
     <ReferentialConstraint>
@@ -137,7 +145,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Comentari__idUsu__38996AB5">
+  <Association Name="FK__Comentari__idUsu__3A81B327">
     <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
     <End Role="Comentarios" Type="Self.Comentarios" Multiplicity="*" />
     <ReferentialConstraint>
@@ -149,7 +157,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Doctores__IdUsua__398D8EEE">
+  <Association Name="FK__Doctores__IdUsua__3B75D760">
     <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
     <End Role="Doctores" Type="Self.Doctores" Multiplicity="*" />
     <ReferentialConstraint>
@@ -161,7 +169,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Expedient__IdDoc__3E52440B">
+  <Association Name="FK__Expedient__IdDoc__403A8C7D">
     <End Role="Doctores" Type="Self.Doctores" Multiplicity="1" />
     <End Role="Expediente" Type="Self.Expediente" Multiplicity="*" />
     <ReferentialConstraint>
@@ -173,7 +181,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Expedient__IdUsu__3F466844">
+  <Association Name="FK__Expedient__IdUsu__412EB0B6">
     <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
     <End Role="Expediente" Type="Self.Expediente" Multiplicity="*" />
     <ReferentialConstraint>
@@ -185,7 +193,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Horario__IdDiaFK__37A5467C">
+  <Association Name="FK__Horario__IdDiaFK__398D8EEE">
     <End Role="Dias" Type="Self.Dias" Multiplicity="1" />
     <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
     <ReferentialConstraint>
@@ -197,7 +205,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Horario__IdDocto__403A8C7D">
+  <Association Name="FK__Horario__IdDocto__4222D4EF">
     <End Role="Doctores" Type="Self.Doctores" Multiplicity="1" />
     <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
     <ReferentialConstraint>
@@ -209,7 +217,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Planilla__IdDoct__3A81B327">
+  <Association Name="FK__Planilla__IdDoct__3C69FB99">
     <End Role="Doctores" Type="Self.Doctores" Multiplicity="1" />
     <End Role="Planilla" Type="Self.Planilla" Multiplicity="*" />
     <ReferentialConstraint>
@@ -221,7 +229,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Usuario__idTipoU__3B75D760">
+  <Association Name="FK__Usuario__idTipoU__3D5E1FD2">
     <End Role="TipoUsuario" Type="Self.TipoUsuario" Multiplicity="1" />
     <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
     <ReferentialConstraint>
@@ -237,6 +245,9 @@
     <Parameter Name="IdDoctor" Type="int" Mode="In" />
   </Function>
   <Function Name="Consultar_Citas_Paciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdPaciente" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Consultar_Comentario_Usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="IdPaciente" Type="int" Mode="In" />
   </Function>
   <Function Name="Consultar_Datos_Usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -302,6 +313,11 @@
     <Parameter Name="Padecimiento" Type="varchar" Mode="In" />
     <Parameter Name="Tratamiento" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="Editar_Servicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdServicio" Type="int" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Imagen" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="Registrar_BitacoraA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Email" Type="varchar" Mode="In" />
     <Parameter Name="FechaHora" Type="datetime" Mode="In" />
@@ -321,6 +337,10 @@
     <Parameter Name="Condicion" Type="varchar" Mode="In" />
     <Parameter Name="Hora" Type="datetime" Mode="In" />
     <Parameter Name="Dia" Type="date" Mode="In" />
+  </Function>
+  <Function Name="Registrar_Comentario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdUsuario" Type="int" Mode="In" />
+    <Parameter Name="Comentario" Type="varchar" Mode="In" />
   </Function>
   <Function Name="Registrar_Datos_Usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Nombre" Type="varchar" Mode="In" />
@@ -353,6 +373,10 @@
     <Parameter Name="Extra" Type="decimal" Mode="In" />
     <Parameter Name="SalNet" Type="decimal" Mode="In" />
   </Function>
+  <Function Name="Registrar_Servicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Imagen" Type="varchar" Mode="In" />
+  </Function>
   <EntityContainer Name="MOSSAModelStoreContainer">
     <EntitySet Name="ABITACORA" EntityType="Self.ABITACORA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Citas" EntityType="Self.Citas" Schema="dbo" store:Type="Tables" />
@@ -363,45 +387,46 @@
     <EntitySet Name="Expediente" EntityType="Self.Expediente" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Horario" EntityType="Self.Horario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Planilla" EntityType="Self.Planilla" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Servicios" EntityType="Self.Servicios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TipoUsuario" EntityType="Self.TipoUsuario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Citas__IdDoctorF__3C69FB99" Association="Self.FK__Citas__IdDoctorF__3C69FB99">
+    <AssociationSet Name="FK__Citas__IdDoctorF__3E52440B" Association="Self.FK__Citas__IdDoctorF__3E52440B">
       <End Role="Doctores" EntitySet="Doctores" />
       <End Role="Citas" EntitySet="Citas" />
     </AssociationSet>
-    <AssociationSet Name="FK__Citas__IdUsuario__3D5E1FD2" Association="Self.FK__Citas__IdUsuario__3D5E1FD2">
+    <AssociationSet Name="FK__Citas__IdUsuario__3F466844" Association="Self.FK__Citas__IdUsuario__3F466844">
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="Citas" EntitySet="Citas" />
     </AssociationSet>
-    <AssociationSet Name="FK__Comentari__idUsu__38996AB5" Association="Self.FK__Comentari__idUsu__38996AB5">
+    <AssociationSet Name="FK__Comentari__idUsu__3A81B327" Association="Self.FK__Comentari__idUsu__3A81B327">
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="Comentarios" EntitySet="Comentarios" />
     </AssociationSet>
-    <AssociationSet Name="FK__Doctores__IdUsua__398D8EEE" Association="Self.FK__Doctores__IdUsua__398D8EEE">
+    <AssociationSet Name="FK__Doctores__IdUsua__3B75D760" Association="Self.FK__Doctores__IdUsua__3B75D760">
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="Doctores" EntitySet="Doctores" />
     </AssociationSet>
-    <AssociationSet Name="FK__Expedient__IdDoc__3E52440B" Association="Self.FK__Expedient__IdDoc__3E52440B">
+    <AssociationSet Name="FK__Expedient__IdDoc__403A8C7D" Association="Self.FK__Expedient__IdDoc__403A8C7D">
       <End Role="Doctores" EntitySet="Doctores" />
       <End Role="Expediente" EntitySet="Expediente" />
     </AssociationSet>
-    <AssociationSet Name="FK__Expedient__IdUsu__3F466844" Association="Self.FK__Expedient__IdUsu__3F466844">
+    <AssociationSet Name="FK__Expedient__IdUsu__412EB0B6" Association="Self.FK__Expedient__IdUsu__412EB0B6">
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="Expediente" EntitySet="Expediente" />
     </AssociationSet>
-    <AssociationSet Name="FK__Horario__IdDiaFK__37A5467C" Association="Self.FK__Horario__IdDiaFK__37A5467C">
+    <AssociationSet Name="FK__Horario__IdDiaFK__398D8EEE" Association="Self.FK__Horario__IdDiaFK__398D8EEE">
       <End Role="Dias" EntitySet="Dias" />
       <End Role="Horario" EntitySet="Horario" />
     </AssociationSet>
-    <AssociationSet Name="FK__Horario__IdDocto__403A8C7D" Association="Self.FK__Horario__IdDocto__403A8C7D">
+    <AssociationSet Name="FK__Horario__IdDocto__4222D4EF" Association="Self.FK__Horario__IdDocto__4222D4EF">
       <End Role="Doctores" EntitySet="Doctores" />
       <End Role="Horario" EntitySet="Horario" />
     </AssociationSet>
-    <AssociationSet Name="FK__Planilla__IdDoct__3A81B327" Association="Self.FK__Planilla__IdDoct__3A81B327">
+    <AssociationSet Name="FK__Planilla__IdDoct__3C69FB99" Association="Self.FK__Planilla__IdDoct__3C69FB99">
       <End Role="Doctores" EntitySet="Doctores" />
       <End Role="Planilla" EntitySet="Planilla" />
     </AssociationSet>
-    <AssociationSet Name="FK__Usuario__idTipoU__3B75D760" Association="Self.FK__Usuario__idTipoU__3B75D760">
+    <AssociationSet Name="FK__Usuario__idTipoU__3D5E1FD2" Association="Self.FK__Usuario__idTipoU__3D5E1FD2">
       <End Role="TipoUsuario" EntitySet="TipoUsuario" />
       <End Role="Usuario" EntitySet="Usuario" />
     </AssociationSet>

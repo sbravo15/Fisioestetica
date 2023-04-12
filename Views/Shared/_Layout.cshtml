@@ -285,8 +285,8 @@
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Control de Pacientes</h6>
-                        <a class="collapse-item" href="tablesUser.html">Buscar Pacientes</a>
-                        <a class="collapse-item" href="@Url.Action("MostrarUsuarios", "Usuario")">Ver Usuarios</a>
+                        <a class="collapse-item" href="@Url.Action("MostrarUsuarios")">Buscar Pacientes</a>
+                        <a class="collapse-item" href="@Url.Action("VerUsuario", "Usuario")">Ver Usuarios</a>
                         <a class="collapse-item" href="@Url.Action("RegistrarUsuarios", "Usuario")">Agregar Usuario</a>
                     </div>
                 </div>
@@ -306,7 +306,7 @@
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Control de Doctores</h6>
-                        <a class="collapse-item" href="@Url.Action("BuscarDoctores", "Doctor")">Buscar Doctores</a>
+                        <a class="collapse-item" href="@Url.Action("BuscarDoctor", "Doctor")">Buscar Doctores</a>
                         <a class="collapse-item" href="@Url.Action("VerDoctor", "Doctor")"">Ver Doctores</a>
                         <a class="collapse-item" href="@Url.Action("CrearDoctor", "Doctor")">Agregar Doctor</a>
                     </div>
